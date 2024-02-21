@@ -1,0 +1,34 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="calendar-container">
+  <div class="calendar-header">
+    <button (click)="changeMonth(-1)">
+      <span class="material-icons">chevron_left</span>
+    </button>
+    <div [ngClass]="monthTransition">
+      <!-- Se ajusta para mostrar la fecha usando Timestamp -->
+      {{ currentMonth.toDate() | date: 'MMMM yyyy' }}
+    </div>
+    <button (click)="changeMonth(1)">
+      <span class="material-icons">chevron_right</span>
+    </button>
+  </div>
+  <div class="week-days row">
+    <div class="col text-center" *ngFor="let dayName of weekDays">{{ dayName }}</div>
+  </div>
+  <div *ngFor="let week of weeks" class="row">
+    <div class="day col" *ngFor="let date of week" [ngClass]="{'today': isToday(date)}">
+      <!-- Se ajusta para mostrar el número de día usando Timestamp -->
+      <div *ngIf="date" class="date-number">{{ date.toDate().getDate() }}</div>
+      <ul *ngIf="date" class="events-list">
+        <ng-container *ngFor="let event of events">
+          <!-- Se ajusta la comparación de fechas para usar Timestamp -->
+          <li *ngIf="isSameDay(event.date, date)">
+            <strong>({{ event.course }}) {{ event.name | slice:0:30 }}{{event.name.length > 30 ? '...' : ''}}</strong>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>
