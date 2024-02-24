@@ -7,7 +7,6 @@
       <span class="material-icons">chevron_left</span>
     </button>
     <div [ngClass]="monthTransition">
-      <!-- Se ajusta para mostrar la fecha usando Timestamp -->
       {{ currentMonth.toDate() | date: 'MMMM yyyy' }}
     </div>
     <button (click)="changeMonth(1)">
@@ -19,13 +18,12 @@
   </div>
   <div *ngFor="let week of weeks" class="row">
     <div class="day col" *ngFor="let date of week" [ngClass]="{'today': isToday(date)}">
-      <!-- Se ajusta para mostrar el número de día usando Timestamp -->
       <div *ngIf="date" class="date-number">{{ date.toDate().getDate() }}</div>
       <ul *ngIf="date" class="events-list">
         <ng-container *ngFor="let event of events">
-          <!-- Se ajusta la comparación de fechas para usar Timestamp -->
           <li *ngIf="isSameDay(event.date, date)">
-            <strong>({{ event.course }}) {{ event.name | slice:0:30 }}{{event.name.length > 30 ? '...' : ''}}</strong>
+            <!-- Corregido para acceder correctamente al nombre del curso -->
+            <strong>{{ event.course?.name ? '(' + event.course?.name + ')' : '' }} {{ event.name | slice:0:30 }}{{event.name.length > 30 ? '...' : ''}}</strong>
           </li>
         </ng-container>
       </ul>
