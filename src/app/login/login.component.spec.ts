@@ -15,21 +15,6 @@ describe('LoginComponent', () => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    const container = document.getElementById('container');
-    const registerBtn = document.getElementById('register');
-    const loginBtn = document.getElementById('login');
-
-    // @ts-ignore
-    registerBtn.addEventListener('click', () => {
-      // @ts-ignore
-      container.classList.add("active");
-    });
-
-    // @ts-ignore
-    loginBtn.addEventListener('click', () => {
-      // @ts-ignore
-      container.classList.remove("active");
-    });
   });
 
   it('should create', () => {
