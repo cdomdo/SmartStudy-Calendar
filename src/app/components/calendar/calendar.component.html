@@ -1,3 +1,4 @@
+<!-- calendar.component.html -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -21,8 +22,7 @@
       <div *ngIf="date" class="date-number">{{ date.toDate().getDate() }}</div>
       <ul *ngIf="date" class="events-list">
         <ng-container *ngFor="let event of events">
-          <li *ngIf="isSameDay(event.date, date)">
-            <!-- Corregido para acceder correctamente al nombre del curso -->
+          <li *ngIf="isSameDay(event.date, date)" (click)="selectEvent(event)">
             <strong>{{ event.course?.name ? '(' + event.course?.name + ')' : '' }} {{ event.name | slice:0:30 }}{{event.name.length > 30 ? '...' : ''}}</strong>
           </li>
         </ng-container>
@@ -30,3 +30,5 @@
     </div>
   </div>
 </div>
+
+<app-event-viewer *ngIf="selectedEvent" [event]="selectedEvent" (close)="onViewerClose()"></app-event-viewer>

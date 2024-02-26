@@ -1,40 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { Timestamp } from '@angular/fire/firestore'; // O 'firebase/firestore', ajusta según tu importación
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
 import Event from "../../interfaces/event.interface";
-import Course from "../../interfaces/course.interface";
 
 @Component({
   selector: 'app-event-viewer',
   templateUrl: './event-viewer.component.html',
-  styleUrls: ['./event-viewer.component.css']
+  styleUrls: ['./event-viewer.component.css'],
+  animations: [
+    trigger('dialog', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.9)' }),
+        animate('200ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+        animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.9)' }))
+      ])
+    ])
+  ]
 })
 export class EventViewerComponent implements OnInit {
-  event: Event = {
-    name: 'Evento de Prueba',
-    date: Timestamp.fromDate(new Date()), // Usa la fecha actual para el ejemplo
-    description: 'Esta es una descripción de prueba del evento.',
-    course: {
-      name: 'Curso de Prueba',
-      description: 'Descripción del curso de prueba.'
-      // Añade más campos si son necesarios
-    }
-  };
+  @Input() event?: Event;
+  @Output() close = new EventEmitter<void>();
 
-  constructor() { }
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   closeDialog() {
+    this.close.emit();
   }
 
   editEvent() {
-    // Lógica para editar el evento
+    // Implementa la lógica para editar el evento
   }
 
   deleteEvent() {
     const confirmation = window.confirm("¿Estás seguro de que quieres borrar este evento?");
     if (confirmation) {
+      // Implementa la lógica para borrar el evento
     }
   }
-
 }

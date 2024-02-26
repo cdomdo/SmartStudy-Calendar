@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EventsService } from "../../services/event.service";
 import { Subscription } from 'rxjs';
-import   Event  from "../../interfaces/event.interface";
+import Event from "../../interfaces/event.interface";
 import { Timestamp } from '@angular/fire/firestore';
 
 @Component({
@@ -16,8 +16,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
   today: Timestamp = Timestamp.now();
   monthTransition: string = '';
   events: (Event & { courseName?: string })[] = [];
-  selectedEventIndex: number = -1;
-  modifiedEvent: Event = { date: Timestamp.now(), name: '' };
+  selectedEvent?: Event;
   private eventsSub: Subscription = new Subscription();
 
   constructor(private eventsService: EventsService) {}
@@ -78,8 +77,12 @@ export class CalendarComponent implements OnInit, OnDestroy {
     // Compara fechas utilizando Timestamp
     return date1.toDate().toDateString() === date2.toDate().toDateString();
   }
-  selectEvent(index: number): void {
-    this.selectedEventIndex = index;
-    this.modifiedEvent = { ...this.events[index] };
+
+  selectEvent(event: Event): void {
+    this.selectedEvent = event;
+  }
+
+  onViewerClose(): void {
+    this.selectedEvent = undefined;
   }
 }
