@@ -8,18 +8,22 @@ import { AppComponent } from './app.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import { EventViewerComponent } from './components/event-viewer/event-viewer.component';
+import {getAuth, provideAuth} from "@angular/fire/auth";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent
+    CalendarComponent,
+    EventViewerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
     FormsModule,
     CommonModule
   ],
