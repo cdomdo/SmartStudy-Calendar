@@ -10,10 +10,17 @@
     <div [ngClass]="monthTransition">
       {{ currentMonth.toDate() | date: 'MMMM yyyy' }}
     </div>
+    <div>
+    <button (click)="createEvent()">
+      <span class="material-icons">add</span>
+    </button>
     <button (click)="changeMonth(1)">
       <span class="material-icons">chevron_right</span>
     </button>
+    </div>
   </div>
+
+
   <div class="week-days row">
     <div class="col text-center" *ngFor="let dayName of weekDays">{{ dayName }}</div>
   </div>

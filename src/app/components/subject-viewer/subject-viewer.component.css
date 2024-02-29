@@ -1,0 +1,84 @@
+.subject-viewer-overlay {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.subject-viewer-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 500px; /* Ancho fijo */
+  max-height: 80%; /* Altura máxima para permitir adaptación */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: auto; /* Permite el desplazamiento si el contenido excede la altura máxima */
+}
+
+h2 {
+  margin-bottom: 10px; /* Reduce el espacio entre el título y la descripción */
+}
+
+.course-details h3, .course-details h4, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0; /* Asegura que no haya indentación en la lista */
+}
+
+li {
+  margin-bottom: 15px; /* Aumenta el espacio entre los elementos de la lista */
+}
+
+.professor-email {
+  display: block; /* Asegura que el email se muestre debajo del nombre */
+  font-family: 'Arial', sans-serif;
+  font-size: 0.9em;
+  color: #555;
+  text-decoration: none; /* Mantiene los enlaces sin subrayar por defecto */
+  position: relative; /* Posicionamiento relativo para el efecto de subrayado */
+  overflow: hidden; /* Asegura que el efecto no se desborde */
+}
+
+.professor-email::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -1px;
+  left: 0;
+  background-color: #555;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.professor-email:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.close-button {
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+  position: absolute;
+  right: 20px;
+  top: 10px; /* Ajusta para más espacio entre el título y la X */
+}
+
+.close-button:hover {
+  color: #333;
+}

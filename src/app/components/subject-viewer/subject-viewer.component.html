@@ -1,0 +1,19 @@
+<div class="subject-viewer-overlay">
+  <div class="subject-viewer-container">
+    <span class="close-button" (click)="closeDialog()">&#10005;</span>
+    <h2>{{ selectedCourse?.name }}</h2>
+    <div *ngIf="selectedCourse" class="course-details">
+      <p>{{ selectedCourse.description }}</p>
+      <h4>Profesores:</h4>
+      <ul>
+        <li *ngFor="let profRef of selectedCourse.professorsRefs">
+          <div>{{ getProfessorName(profRef) }}</div>
+          <!-- Utiliza 'mailto:' en el href para abrir el cliente de correo -->
+          <a href="mailto:{{ getProfessorEmail(profRef.id) }}" class="professor-email">
+            {{ getProfessorEmail(profRef.id) }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

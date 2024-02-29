@@ -1,0 +1,131 @@
+.subject-manager-overlay {
+  font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto a todo el diálogo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.subject-manager-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 80%;
+  position: relative;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.courses-list-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.courses-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.courses-list li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.courses-list li:hover, .courses-list li.selected {
+  background-color: #f9f9f9;
+}
+
+.course-actions {
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards; /* Animación para aparecer suavemente */
+  margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.create-course {
+  text-align: right;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: rgb(69, 84, 117); /* Color inicial */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: rgb(53, 65, 89); /* Color al hacer hover */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Color inicial */
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Color al hacer hover */
+}
+
+.btn-success {
+  background-color: #28a745; /* Color inicial para el botón de Crear */
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #6c757d; /* Cambia a un tono más gris en lugar de verde al hacer hover */
+}
+
+.close-button {
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+  position: absolute;
+  right: 20px; /* Asegura que la X esté correctamente alineada a la derecha */
+  top: 20px; /* Posiciona la X correctamente dentro del cuadro */
+}
+
+.close-button:hover {
+  color: #333;
+}

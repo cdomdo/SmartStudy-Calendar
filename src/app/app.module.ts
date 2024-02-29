@@ -13,6 +13,10 @@ import {getAuth, provideAuth} from "@angular/fire/auth";
 import { EventCreatorComponent } from './components/event-creator/event-creator.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { EventEditorComponent } from './components/event-editor/event-editor.component';
+import { SubjectManagerComponent } from './components/subject-manager/subject-manager.component';
+import { SubjectViewerComponent } from './components/subject-viewer/subject-viewer.component';
+import { SubjectEditorComponent } from './components/subject-editor/subject-editor.component';
+import { ProfessorCreatorComponent } from './components/professor-creator/professor-creator.component';
 
 
 @NgModule({
@@ -21,7 +25,11 @@ import { EventEditorComponent } from './components/event-editor/event-editor.com
     CalendarComponent,
     EventViewerComponent,
     EventCreatorComponent,
-    EventEditorComponent
+    EventEditorComponent,
+    SubjectManagerComponent,
+    SubjectViewerComponent,
+    SubjectEditorComponent,
+    ProfessorCreatorComponent
   ],
   imports: [
     BrowserModule,

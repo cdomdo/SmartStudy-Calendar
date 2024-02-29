@@ -85,4 +85,8 @@ export class CalendarComponent implements OnInit, OnDestroy {
   onViewerClose(): void {
     this.selectedEvent = undefined;
   }
+
+  createEvent() {
+    // Implementar lógica de crear evento
+  }
 }

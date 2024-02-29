@@ -1,0 +1,27 @@
+<div class="subject-editor-overlay">
+  <div class="subject-editor-container">
+    <span class="close-button" (click)="closeDialog()">&#10005;</span>
+    <h2>Editar Curso</h2>
+    <form [formGroup]="courseForm" (ngSubmit)="saveCourse()">
+      <div class="form-group">
+        <label for="name">Nombre del curso:</label>
+        <input id="name" type="text" formControlName="name">
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea id="description" formControlName="description"></textarea>
+      </div>
+      <button type="button" (click)="addProfessor()" class="btn-add">Añadir Profesor</button>
+      <div class="professors-container" formArrayName="professors">
+        <div *ngFor="let professor of professors.controls; let i=index" [formGroupName]="i" class="professor-item" (click)="selectProfessor(i)">
+          <p>{{ professor?.get('name')?.value }}</p>
+        </div>
+      </div>
+      <div *ngIf="selectedProfessorIndex !== null" class="buttons-container">
+        <button type="button" class="btn-edit" (click)="editProfessor()">Editar Profesor</button>
+        <button type="button" class="btn-delete" (click)="removeProfessor()">Eliminar Profesor</button>
+      </div>
+      <button type="submit" class="btn-save">Guardar Cambios</button>
+    </form>
+  </div>
+</div>

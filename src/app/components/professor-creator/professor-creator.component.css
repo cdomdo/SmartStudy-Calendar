@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.professor-creator-container {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  padding-top: 40px; /* Espacio para la 'X' */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* Para posicionar la 'X' absolutamente */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-save {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  width: fit-content;
+  margin: 20px auto; /* Centrado */
+}
+
+.btn-save:hover {
+  background-color: #0056b3;
+}
+
+.close-button {
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.close-button:hover {
+  color: #333;
+}
