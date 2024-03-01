@@ -1,4 +1,4 @@
-<div class="subject-manager-overlay">
+<div @dialog class="subject-manager-overlay">
   <div class="subject-manager-container">
     <div class="dialog-header">
       <h2>Gestión de asignaturas</h2>
@@ -22,3 +22,4 @@
     </div>
   </div>
 </div>
+<app-subject-editor *ngIf="showEditor" [course]="selectedCourse" (close)="closeEditor()"></app-subject-editor>

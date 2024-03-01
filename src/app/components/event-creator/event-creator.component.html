@@ -1,9 +1,9 @@
-<div class="event-creator-overlay">
+<div class="event-creator-overlay" @dialog>
   <div class="event-creator-container">
     <span class="close-button" (click)="closeDialog()">&#10005;</span>
     <form [formGroup]="eventForm" (ngSubmit)="createEvent()">
       <div class="form-group">
-        <h2> Crear evento </h2>
+        <h2>Crear evento</h2>
         <label for="eventName">Nombre:</label>
         <input type="text" id="eventName" formControlName="name" class="form-control">
       </div>
@@ -32,3 +32,4 @@
     </form>
   </div>
 </div>
+<app-subject-manager *ngIf="showSubjectManager" (close)="closeSubjectManager()"></app-subject-manager>

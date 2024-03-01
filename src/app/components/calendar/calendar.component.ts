@@ -18,6 +18,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
   events: (Event & { courseName?: string })[] = [];
   selectedEvent?: Event;
   private eventsSub: Subscription = new Subscription();
+  showEventCreator: boolean = false; // Control para mostrar/ocultar el creador de eventos
 
   constructor(private eventsService: EventsService) {}
 
@@ -86,7 +87,15 @@ export class CalendarComponent implements OnInit, OnDestroy {
     this.selectedEvent = undefined;
   }
 
-  createEvent() {
-    // Implementar lógica de crear evento
+  createEvent(): void {
+    this.showEventCreator = true;
+  }
+
+  onEventCreated(event: any): void {
+    this.showEventCreator = false;
+  }
+
+  closeDialog(): void {
+    this.showEventCreator = false;
   }
 }

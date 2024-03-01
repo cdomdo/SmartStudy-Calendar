@@ -39,3 +39,4 @@
 </div>
 
 <app-event-viewer *ngIf="selectedEvent" [event]="selectedEvent" (close)="onViewerClose()"></app-event-viewer>
+<app-event-creator *ngIf="showEventCreator" (eventCreated)="onEventCreated($event)" (close)="closeDialog()"></app-event-creator>

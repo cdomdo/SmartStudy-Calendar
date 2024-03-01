@@ -1,54 +1,87 @@
-import { Component, OnInit } from '@angular/core';
-import Course from '../../interfaces/course.interface'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { CourseService } from '../../services/course.service';
+import Course from '../../interfaces/course.interface';
 
 @Component({
   selector: 'app-subject-manager',
   templateUrl: './subject-manager.component.html',
-  styleUrls: ['./subject-manager.component.css']
+  styleUrls: ['./subject-manager.component.css'],
+  animations: [
+    trigger('dialog', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.9)' }),
+        animate('200ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+        animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.9)' })),
+      ])
+    ])
+  ]
 })
 export class SubjectManagerComponent implements OnInit {
-  courses: Course[] = [
-    { id: '1', name: 'Curso 1', description: 'Descripción del Curso 1' },
-    { id: '2', name: 'Curso 2', description: 'Descripción del Curso 2' },
-    { id: '3', name: 'Curso 3', description: 'Descripción del Curso 3' },
-    { id: '4', name: 'Curso 4', description: 'Descripción del Curso 4' },
-    { id: '5', name: 'Curso 5', description: 'Descripción del Curso 5' },
-    { id: '6', name: 'Curso 6', description: 'Descripción del Curso 6' },
-    { id: '7', name: 'Curso 7', description: 'Descripción del Curso 7' },
-    { id: '8', name: 'Curso 8', description: 'Descripción del Curso 8' },
-    { id: '9', name: 'Curso 9', description: 'Descripción del Curso 9' },
-    { id: '10', name: 'Curso 10', description: 'Descripción del Curso 10' }
-  ];
-  selectedCourse?: Course;
+  courses: Course[] = [];
+  selectedCourse: Course | null = null;
+  showEditor: boolean = false;
 
-  constructor() {}
+  @Output() close = new EventEmitter<void>();
 
-  ngOnInit(): void {}
+  constructor(private courseService: CourseService) {}
+
+  ngOnInit(): void {
+    this.loadCourses();
+  }
+
+  loadCourses(): void {
+    this.courseService.getAllCourses().subscribe(courses => {
+      this.courses = courses;
+    });
+  }
 
   selectCourse(course: Course): void {
     this.selectedCourse = course;
   }
 
   deleteSelectedCourse(): void {
-    if (!this.selectedCourse || !this.selectedCourse.id) {
-      console.error('No hay un curso seleccionado para eliminar.');
+    if (this.selectedCourse === null) {
+      alert('No course selected for deletion.'); // Simple user feedback
       return;
     }
-    this.courses = this.courses.filter(course => course.id !== this.selectedCourse?.id);
-    this.selectedCourse = undefined; // Resetea el curso seleccionado después de eliminarlo
+    // Confirm deletion with the user
+    const confirmDeletion = confirm('Are you sure you want to delete this course?');
+    if (!confirmDeletion) {
+      return;
+    }
+    this.courseService.deleteCourse(this.selectedCourse.id).then(() => {
+      this.courses = this.courses.filter(course => course.id !== this.selectedCourse?.id);
+      this.selectedCourse = null; // Reset the selected course after deleting
+      alert('Course successfully deleted.'); // Simple user feedback
+    }).catch(error => {
+      console.error('Error deleting course:', error);
+      alert('Failed to delete the course.'); // Simple user feedback
+    });
   }
 
   editSelectedCourse(): void {
-    // Aquí iría la lógica para editar el curso seleccionado
+    if (this.selectedCourse === null) {
+      alert('No course selected for editing.'); // Simple user feedback
+      return;
+    }
+    this.showEditor = true;
   }
 
   createCourse(): void {
-    // Lógica para crear un nuevo curso
+    // Here you would implement functionality to create a new course
+  }
+
+  closeEditor(): void {
+    this.showEditor = false;
+    // Optionally, reload courses in case changes were made
+    this.loadCourses();
   }
 
   closeDialog(): void {
-    // Implementa la lógica para cerrar este componente/diálogo, por ejemplo, ocultándolo o cambiando una variable de estado.
-    console.log('Diálogo cerrado');
+    this.showEditor = false;
+    this.close.emit();
   }
-
 }
