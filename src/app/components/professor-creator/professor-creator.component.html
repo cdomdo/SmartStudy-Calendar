@@ -1,0 +1,14 @@
+<div class="professor-creator-container">
+  <span class="close-button" (click)="closeDialog()">&#10005;</span>
+  <form [formGroup]="professorForm" (ngSubmit)="saveProfessor()">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email">
+    </div>
+    <button type="submit" class="btn-save">Guardar Profesor</button>
+  </form>
+</div>

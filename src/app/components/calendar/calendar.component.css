@@ -147,3 +147,12 @@
     flex: 1 0 100%; /* Ajusta para que cada día ocupe toda la fila */
   }
 }
+
+.events-list li {
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Opcional: añade una transición suave para el hover */
+}
+
+.events-list li:hover {
+  background-color: #f0f0f0; /* Cambia el color de fondo al pasar el mouse por encima, opcional */
+}

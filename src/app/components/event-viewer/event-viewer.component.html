@@ -1,0 +1,14 @@
+<!-- event-viewer.component.html -->
+<div class="event-viewer-container" *ngIf="event" @dialog>
+  <div class="event-content">
+    <span class="close-button" (click)="closeDialog()">&#10005;</span>
+    <h2>{{ event.name }}</h2>
+    <p class="event-date">{{ event.date.toDate() | date:'fullDate' | uppercase }} - {{ event.date.toDate() | date:'shortTime' | uppercase }}</p>
+    <p class="course-name">{{ event.course?.name | uppercase }}</p>
+    <p class="event-description">{{ event.description }}</p>
+    <div class="action-buttons">
+      <button class="btn btn-primary" (click)="editEvent()">Editar</button>
+      <button class="btn btn-danger" (click)="deleteEvent()">Borrar</button>
+    </div>
+  </div>
+</div>
