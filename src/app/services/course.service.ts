@@ -6,7 +6,7 @@ import {
   collectionData,
   collection,
   deleteDoc,
-  doc
+  doc, updateDoc
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import  Course  from '../interfaces/course.interface';
@@ -30,5 +30,15 @@ export class CourseService {
   deleteCourse(courseId: string): Promise<void> {
     const courseDocRef = doc(this.firestore, 'courses', courseId);
     return deleteDoc(courseDocRef);
+  }
+
+  updateCourse(courseId: string, updatedCourseData: Course): Promise<void> {
+    const courseDocRef = doc(this.firestore, 'courses', courseId);
+    return updateDoc(courseDocRef, {
+      name: updatedCourseData.name,
+      description: updatedCourseData.description,
+      // Asegúrate de actualizar aquí todos los campos relevantes de Course
+      // Si manejas referencias a profesores, necesitarás una lógica adicional para manejar eso
+    });
   }
 }

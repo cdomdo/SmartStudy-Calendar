@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 .subject-manager-overlay {
   font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto a todo el diálogo */
   display: flex;
@@ -28,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Espacio aumentado entre la X de cerrar y la lista */
 }
 
 h2 {
@@ -109,7 +111,7 @@ h2 {
 }
 
 .btn-success {
-  background-color: #28a745; /* Color inicial para el botón de Crear */
+  background-color: #455475; /* Color inicial para el botón de Crear */
   color: white;
 }
 

@@ -18,6 +18,7 @@ import { SubjectViewerComponent } from './components/subject-viewer/subject-view
 import { SubjectEditorComponent } from './components/subject-editor/subject-editor.component';
 import { ProfessorCreatorComponent } from './components/professor-creator/professor-creator.component';
 import { ProfessorManagerComponent } from './components/professor-manager/professor-manager.component';
+import { SubjectCreatorComponent } from './components/subject-creator/subject-creator.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ProfessorManagerComponent } from './components/professor-manager/profes
     SubjectEditorComponent,
     ProfessorCreatorComponent,
     ProfessorManagerComponent,
-    SubjectEditorComponent
+    SubjectEditorComponent,
+    SubjectCreatorComponent
   ],
   imports: [
     BrowserModule,

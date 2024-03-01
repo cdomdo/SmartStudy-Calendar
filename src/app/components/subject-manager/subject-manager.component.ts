@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations';
 import { CourseService } from '../../services/course.service';
 import Course from '../../interfaces/course.interface';
+import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-subject-manager',
@@ -14,11 +14,12 @@ import Course from '../../interfaces/course.interface';
         animate('200ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
       ]),
       transition(':leave', [
-        animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.9)' })),
+        animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.9)' }))
       ])
     ])
   ]
 })
+
 export class SubjectManagerComponent implements OnInit {
   courses: Course[] = [];
   selectedCourse: Course | null = null;
@@ -43,41 +44,33 @@ export class SubjectManagerComponent implements OnInit {
   }
 
   deleteSelectedCourse(): void {
-    if (this.selectedCourse === null) {
-      alert('No course selected for deletion.'); // Simple user feedback
+    if (!this.selectedCourse || typeof this.selectedCourse.id === 'undefined') {
+      alert('No course selected for deletion.');
       return;
     }
-    // Confirm deletion with the user
-    const confirmDeletion = confirm('Are you sure you want to delete this course?');
+    const confirmDeletion = confirm('¿Estás seguro de que quieres borrar esta asignatura?');
     if (!confirmDeletion) {
       return;
     }
     this.courseService.deleteCourse(this.selectedCourse.id).then(() => {
       this.courses = this.courses.filter(course => course.id !== this.selectedCourse?.id);
-      this.selectedCourse = null; // Reset the selected course after deleting
-      alert('Course successfully deleted.'); // Simple user feedback
+      this.selectedCourse = null;
     }).catch(error => {
-      console.error('Error deleting course:', error);
-      alert('Failed to delete the course.'); // Simple user feedback
+      alert('Failed to delete the course.');
     });
   }
 
   editSelectedCourse(): void {
-    if (this.selectedCourse === null) {
-      alert('No course selected for editing.'); // Simple user feedback
-      return;
-    }
     this.showEditor = true;
   }
 
   createCourse(): void {
-    // Here you would implement functionality to create a new course
+    // Implementa la lógica para crear un nuevo curso
   }
 
   closeEditor(): void {
     this.showEditor = false;
-    // Optionally, reload courses in case changes were made
-    this.loadCourses();
+    this.loadCourses(); // Recargar los cursos después de cerrar el editor
   }
 
   closeDialog(): void {

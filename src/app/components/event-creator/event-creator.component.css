@@ -65,12 +65,12 @@
 }
 
 .btn-primary {
-  background-color: rgb(69, 84, 117);
+  background-color: rgb(245, 203, 92);
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: rgb(53, 65, 89);
+  background-color: rgba(245, 203, 92, 0.71);
 }
 
 .action-buttons {
