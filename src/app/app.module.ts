@@ -36,7 +36,7 @@ import { LoginregisterComponent } from './loginregister/loginregister.component'
     ProfessorCreatorComponent,
     ProfessorManagerComponent,
     SubjectEditorComponent,
-    SubjectCreatorComponent
+    SubjectCreatorComponent,
     LoginregisterComponent
   ],
   imports: [
