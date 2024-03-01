@@ -8,14 +8,14 @@ import { AppComponent } from './app.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
-import { LoginComponent } from './login/login.component';
+import { LoginregisterComponent } from './loginregister/loginregister.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
-    LoginComponent
+    LoginregisterComponent
   ],
   imports: [
     BrowserModule,

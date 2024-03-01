@@ -1,14 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-loginregister',
+  templateUrl: './loginregister.component.html',
+  styleUrl: './loginregister.component.css'
 })
-export class LoginComponent implements OnInit {
-
-  constructor() { }
-
+export class LoginregisterComponent {
   ngOnInit(): void {
     const container = document.getElementById('container');
     const registerBtn = document.getElementById('register');
@@ -26,5 +23,4 @@ export class LoginComponent implements OnInit {
       console.error('Elements not found.');
     }
   }
-
 }
