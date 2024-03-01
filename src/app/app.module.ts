@@ -19,6 +19,8 @@ import { SubjectEditorComponent } from './components/subject-editor/subject-edit
 import { ProfessorCreatorComponent } from './components/professor-creator/professor-creator.component';
 import { ProfessorManagerComponent } from './components/professor-manager/professor-manager.component';
 import { SubjectCreatorComponent } from './components/subject-creator/subject-creator.component';
+import { LoginregisterComponent } from './loginregister/loginregister.component';
+
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { SubjectCreatorComponent } from './components/subject-creator/subject-cr
     ProfessorManagerComponent,
     SubjectEditorComponent,
     SubjectCreatorComponent
+    LoginregisterComponent
   ],
   imports: [
     BrowserModule,
