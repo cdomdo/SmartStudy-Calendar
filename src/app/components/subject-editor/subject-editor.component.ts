@@ -47,10 +47,6 @@ export class SubjectEditorComponent implements OnInit {
   }
 
   addProfessor(): void {
-    const professorGroup = this.fb.group({
-      name: ['', Validators.required],
-    });
-    this.professors.push(professorGroup);
   }
 
   editProfessor(index: number): void {

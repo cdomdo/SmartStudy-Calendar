@@ -108,3 +108,4 @@ h2, .event-date, .course-name, .event-description {
 .event-viewer-container.ng-leave {
   animation-name: fadeOut;
 }
+

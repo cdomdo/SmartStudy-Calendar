@@ -93,12 +93,12 @@ h2 {
 }
 
 .btn-primary {
-  background-color: rgb(69, 84, 117); /* Color inicial */
+  background-color: rgb(245, 203, 92); /* Color inicial */
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: rgb(53, 65, 89); /* Color al hacer hover */
+  background-color: rgb(190, 156, 69); /* Color al hacer hover */
 }
 
 .btn-secondary {
@@ -111,12 +111,12 @@ h2 {
 }
 
 .btn-success {
-  background-color: #455475; /* Color inicial para el botón de Crear */
+  background-color: #f5cb5c; /* Color inicial para el botón de Crear */
   color: white;
 }
 
 .btn-success:hover {
-  background-color: #6c757d; /* Cambia a un tono más gris en lugar de verde al hacer hover */
+  background-color: rgba(245, 203, 92, 0.66); /* Cambia a un tono más gris en lugar de verde al hacer hover */
 }
 
 .close-button {

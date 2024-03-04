@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Timestamp } from '@angular/fire/firestore';
-import { animate, style, transition, trigger } from "@angular/animations";
-import { CourseService } from "../../services/course.service";
-import Course from "../../interfaces/course.interface";
+import { animate, style, transition, trigger } from '@angular/animations';
+import { CourseService } from '../../services/course.service';
+import { EventsService } from '../../services/event.service';
+import { Firestore, Timestamp } from '@angular/fire/firestore';
+import Course from '../../interfaces/course.interface';
 
 @Component({
   selector: 'app-event-creator',
@@ -22,15 +23,26 @@ import Course from "../../interfaces/course.interface";
   ]
 })
 export class EventCreatorComponent implements OnInit {
-  eventForm: FormGroup;
+  eventForm!: FormGroup;
   courses: Course[] = [];
   showSubjectManager: boolean = false;
-
 
   @Output() eventCreated = new EventEmitter<any>();
   @Output() close = new EventEmitter<void>();
 
-  constructor(private fb: FormBuilder, private courseService: CourseService) {
+  constructor(
+    private fb: FormBuilder,
+    private courseService: CourseService,
+    private eventsService: EventsService,
+    private firestore: Firestore
+  ) {}
+
+  ngOnInit(): void {
+    this.initializeForm();
+    this.loadCourses();
+  }
+
+  initializeForm(): void {
     this.eventForm = this.fb.group({
       name: ['', Validators.required],
       date: ['', Validators.required],
@@ -38,10 +50,6 @@ export class EventCreatorComponent implements OnInit {
       course: ['', Validators.required],
       description: ['']
     });
-  }
-
-  ngOnInit(): void {
-    this.loadCourses();
   }
 
   loadCourses(): void {
@@ -54,32 +62,46 @@ export class EventCreatorComponent implements OnInit {
     if (this.eventForm.valid) {
       const formValue = this.eventForm.value;
       const eventDateTime = Timestamp.fromDate(new Date(`${formValue.date}T${formValue.time}`));
+      const courseRef = this.courseService.createRefToCourse(formValue.course);
+
       const newEvent = {
-        ...formValue,
-        date: {
-          seconds: eventDateTime.seconds,
-          nanoseconds: eventDateTime.nanoseconds
-        },
+        name: formValue.name,
+        date: eventDateTime,
+        description: formValue.description,
+        courseRef: courseRef // Usando la referencia al curso
       };
-      this.eventCreated.emit(newEvent);
-      this.eventForm.reset();
-      this.closeDialog();
+
+      this.eventsService.addEvent(newEvent).then(() => {
+        this.eventCreated.emit(newEvent);
+        this.eventForm.reset();
+        this.closeDialog();
+      }).catch((error: any) => {
+        console.error('Error creating event:', error);
+        window.alert('Hubo un error al crear el evento. Por favor, intenta nuevamente.');
+      });
     } else {
-      window.alert('No es posible crear un evento sin completar los campos obligatorios.');
+      window.alert('Por favor, completa todos los campos requeridos.');
     }
   }
 
-// Método para abrir el diálogo
+
   manageSubjects(): void {
     this.showSubjectManager = true;
   }
 
-// Método para cerrar el diálogo
   closeSubjectManager(): void {
     this.showSubjectManager = false;
+    this.loadCourses();
+  }
+
+  openDialog(): void {
+    this.initializeForm();
+    this.loadCourses();
+    this.showSubjectManager = true;
   }
 
   closeDialog(): void {
+    this.showSubjectManager = false;
     this.close.emit();
   }
 }

@@ -1,0 +1,92 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+.event-creator-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.event-creator-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px; /* Bordes redondeados para el contenedor */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Ancho fijo */
+  max-width: 100%; /* Asegura que no exceda el ancho del viewport */
+  position: relative; /* Permite posicionar absolutamente el botón de cierre */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%; /* Asegura que cada caja de texto/elección tenga el mismo ancho */
+  padding: 8px;
+  margin-bottom: 1em;
+  border-radius: 4px; /* Bordes ligeramente redondeados para las cajas de texto/elección */
+  border: 1px solid #ced4da;
+}
+
+/* Específicamente para el textarea de descripción */
+.form-control.textarea {
+  height: 150px; /* Ajusta la altura para dar más espacio */
+  resize: vertical; /* Permite al usuario ajustar la altura si lo necesita */
+}
+
+
+.btn-secondary, .btn-primary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px; /* Botones redondeados */
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 5px; /* Espaciado entre botones */
+  display: inline-block; /* Asegura que los botones no se extiendan más allá de su contenido */
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-primary {
+  background-color: rgb(245, 203, 92);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: rgba(245, 203, 92, 0.71);
+}
+
+.action-buttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.close-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+}
+
+.close-button:hover {
+  color: #333;
+}

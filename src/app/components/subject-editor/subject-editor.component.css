@@ -16,7 +16,7 @@
 .subject-editor-container, .subject-manager-container {
   background-color: #fff;
   padding: 20px;
-  padding-top: 40px; /* Aumentado el padding superior para más espacio entre la X y el contenido */
+  padding-top: 40px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 600px;
@@ -72,26 +72,41 @@ input[type="text"], input[type="email"], textarea, .courses-list-container {
 }
 
 .btn, .btn-edit, .btn-delete, .btn-add, .btn-save, .btn-primary, .btn-secondary, .btn-success {
-  padding: 6px 12px;
-  font-size: 14px;
-  background-color: #354159;
-  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
   border: none;
-  border-radius: 4px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+  margin: 10px 5px;
+  background-color: #6c757d;
+  color: white;
 }
 
-.btn-edit:hover, .btn-delete:hover, .btn-primary:hover {
-  background-color: #0056b3;
+.btn-primary {
+  background-color: rgb(245, 203, 92);
 }
 
-.btn-delete:hover, .btn-secondary:hover {
-  background-color: #d9534f;
+.btn-primary:hover {
+  background-color: rgba(245, 203, 92, 0.71);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn-secondary:hover, .btn-delete:hover {
+  background-color: #5a6268;
+}
+
+.btn-success {
+  background-color: #28a745;
 }
 
 .btn-success:hover {
-  background-color: #5a6268;
+  background-color: #218838;
 }
 
 .close-button {
@@ -121,12 +136,12 @@ input[type="text"], input[type="email"], textarea, .courses-list-container {
   display: block;
   width: fit-content;
   margin: 20px auto;
-  padding: 6px 12px;
-  font-size: 14px;
-  background-color: #354159;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #f5cb5c;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

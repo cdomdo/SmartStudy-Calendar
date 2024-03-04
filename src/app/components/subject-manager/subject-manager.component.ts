@@ -24,6 +24,7 @@ export class SubjectManagerComponent implements OnInit {
   courses: Course[] = [];
   selectedCourse: Course | null = null;
   showEditor: boolean = false;
+  showCreator: boolean = false;
 
   @Output() close = new EventEmitter<void>();
 
@@ -65,7 +66,12 @@ export class SubjectManagerComponent implements OnInit {
   }
 
   createCourse(): void {
-    // Implementa la lógica para crear un nuevo curso
+    this.showCreator = true; // Muestra el diálogo de creación de curso
+  }
+
+  closeCreator(): void {
+    this.showCreator = false; // Cierra el diálogo y posiblemente recarga los cursos
+    this.loadCourses();
   }
 
   closeEditor(): void {

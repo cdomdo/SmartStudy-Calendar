@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import Event from "../../interfaces/event.interface";
+import { EventsService } from "../../services/event.service";
 
 @Component({
   selector: 'app-event-viewer',
@@ -22,20 +23,25 @@ export class EventViewerComponent implements OnInit {
   @Input() event?: Event;
   @Output() close = new EventEmitter<void>();
 
+  constructor(private eventsService: EventsService) {}
+
   ngOnInit(): void {}
 
   closeDialog() {
     this.close.emit();
   }
 
-  editEvent() {
-    // Implementa la lógica para editar el evento
-  }
-
   deleteEvent() {
     const confirmation = window.confirm("¿Estás seguro de que quieres borrar este evento?");
-    if (confirmation) {
-      // Implementa la lógica para borrar el evento
+    if (confirmation && this.event?.id) {
+      this.eventsService.deleteEvent(this.event.id).then(() => {
+        this.closeDialog();
+      }).catch((error: any) => {
+        window.alert('Hubo un error al borrar el evento. Por favor, intenta nuevamente.');
+      });
     }
+  }
+
+  editEvent() {
   }
 }
