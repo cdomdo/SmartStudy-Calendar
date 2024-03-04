@@ -7,9 +7,10 @@
       <button class="icon-button delete" (click)="deleteEvent()"><i class="fas fa-trash"></i></button>
       <span class="close-button" (click)="closeDialog()">&#10005;</span>
     </div>
-    <h2>{{ event.name }}</h2>
+    <h4>{{ event.name }}</h4>
     <p class="event-date">{{ event.date.toDate() | date:'fullDate' | uppercase }} - {{ event.date.toDate() | date:'shortTime' | uppercase }}</p>
-    <p class="course-name">{{ event.course?.name | uppercase }}</p>
+    <p class="course-name" (click)="toggleSubjectViewer()">{{ event.course?.name | uppercase }}</p>
     <p class="event-description">{{ event.description }}</p>
   </div>
+  <app-subject-viewer *ngIf="showSubjectViewer" [selectedCourse]="selectedCourse" (close)="showSubjectViewer=false"></app-subject-viewer>
 </div>

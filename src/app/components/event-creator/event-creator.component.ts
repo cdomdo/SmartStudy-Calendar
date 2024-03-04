@@ -26,6 +26,7 @@ export class EventCreatorComponent implements OnInit {
   eventForm!: FormGroup;
   courses: Course[] = [];
   showSubjectManager: boolean = false;
+  isLoadingCourses: boolean = true;
 
   @Output() eventCreated = new EventEmitter<any>();
   @Output() close = new EventEmitter<void>();
@@ -53,8 +54,12 @@ export class EventCreatorComponent implements OnInit {
   }
 
   loadCourses(): void {
+    this.isLoadingCourses = true; // Empieza la carga
     this.courseService.getAllCourses().subscribe(courses => {
       this.courses = courses;
+      this.isLoadingCourses = false; // Termina la carga
+    }, () => {
+      this.isLoadingCourses = false; // Asegura finalizar la carga en caso de error
     });
   }
 

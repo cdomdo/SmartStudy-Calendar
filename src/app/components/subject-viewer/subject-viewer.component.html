@@ -1,10 +1,11 @@
-<div class="subject-viewer-overlay">
+<div class="subject-viewer-overlay" [@dialog]>
   <div class="subject-viewer-container">
     <span class="close-button" (click)="closeDialog()">&#10005;</span>
-    <h2>{{ selectedCourse?.name }}</h2>
+    <h5>{{ selectedCourse?.name }}</h5>
     <div *ngIf="selectedCourse" class="course-details">
       <p>{{ selectedCourse.description }}</p>
-      <h4>Profesores:</h4>
+      <!-- Comentado por ahora
+      <h6>Profesores:</h6>
       <ul>
         <li *ngFor="let profRef of selectedCourse.professorsRefs">
           <div>{{ getProfessorName(profRef) }}</div>
@@ -13,6 +14,7 @@
           </a>
         </li>
       </ul>
+      -->
     </div>
   </div>
 </div>

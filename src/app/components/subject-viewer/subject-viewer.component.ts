@@ -1,34 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
-
-interface Professor {
-  id: string;
-  name: string;
-  email: string;
-}
-
-interface DocumentReference<T> {
-  id: string;
-}
-
-interface Course {
-  id: string;
-  name: string;
-  professorsRefs: DocumentReference<Professor>[];
-  description: string;
-}
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { trigger, style, animate, transition } from '@angular/animations';
+import Professor from "../../interfaces/professor.interface";
+import Course from "../../interfaces/course.interface";
+import { DocumentReference } from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-subject-viewer',
   templateUrl: './subject-viewer.component.html',
-  styleUrls: ['./subject-viewer.component.css']
+  styleUrls: ['./subject-viewer.component.css'],
+  animations: [
+    trigger('dialog', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.9)' }),
+        animate('200ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+        animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.9)' }))
+      ])
+    ])
+  ]
 })
 export class SubjectViewerComponent implements OnInit {
-  @Input() selectedCourse?: Course; // Ahora acepta un curso como entrada
-  professors: Professor[] = [
-    { id: 'prof1', name: 'Profesor Uno', email: 'prof1@example.com' },
-    { id: 'prof2', name: 'Profesor Dos', email: 'prof2@example.com' },
-    { id: 'prof3', name: 'Profesor Tres', email: 'prof3@example.com' }
-  ];
+  @Input() selectedCourse?: Course;
+  @Output() close = new EventEmitter<void>();
+
+  professors: Professor[] = [];
 
   ngOnInit(): void {}
 
@@ -43,6 +39,6 @@ export class SubjectViewerComponent implements OnInit {
   }
 
   closeDialog() {
-    // Implementa la lógica para cerrar este componente, por ejemplo, emitiendo un evento o cambiando una variable booleana en el componente padre
+    this.close.emit();
   }
 }

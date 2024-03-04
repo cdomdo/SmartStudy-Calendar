@@ -2,6 +2,7 @@ import {Component, Input, Output, EventEmitter, OnInit, signal} from '@angular/c
 import { animate, style, transition, trigger } from '@angular/animations';
 import Event from "../../interfaces/event.interface";
 import { EventsService } from "../../services/event.service";
+import Course from "../../interfaces/course.interface";
 
 @Component({
   selector: 'app-event-viewer',
@@ -22,11 +23,19 @@ import { EventsService } from "../../services/event.service";
 export class EventViewerComponent implements OnInit {
   @Input() event?: Event;
   @Output() close = new EventEmitter<void>();
-  openSubjectViewer = signal<any | null>(null);
+  showSubjectViewer: boolean = false; // Controla la visibilidad de SubjectViewerComponent
+  selectedCourse?: Course; // Almacena el curso seleccionado para pasarlo a SubjectViewerComponent
 
   constructor(private eventsService: EventsService) {}
 
   ngOnInit(): void {}
+
+  toggleSubjectViewer() {
+    if (this.event && this.event.course) {
+      this.selectedCourse = this.event.course; // Asume que event.course es del tipo Course
+      this.showSubjectViewer = true;
+    }
+  }
 
   closeDialog() {
     this.close.emit();

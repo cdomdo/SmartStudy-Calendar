@@ -3,7 +3,7 @@
     <span class="close-button" (click)="closeDialog()">&#10005;</span>
     <form [formGroup]="eventForm" (ngSubmit)="createEvent()">
       <div class="form-group">
-        <h2>Crear evento</h2>
+        <h4>Crear evento</h4>
         <label for="eventName">Nombre:</label>
         <input type="text" id="eventName" formControlName="name" class="form-control">
       </div>
@@ -27,7 +27,7 @@
       </div>
       <div class="action-buttons">
         <button type="button" class="btn btn-secondary" (click)="manageSubjects()">Gestionar asignaturas</button>
-        <button type="submit" class="btn btn-primary">Crear evento</button>
+        <button class="btn-primary" [disabled]="isLoadingCourses">Crear Evento</button>
       </div>
     </form>
   </div>
