@@ -8,7 +8,6 @@
       <ul>
         <li *ngFor="let profRef of selectedCourse.professorsRefs">
           <div>{{ getProfessorName(profRef) }}</div>
-          <!-- Utiliza 'mailto:' en el href para abrir el cliente de correo -->
           <a href="mailto:{{ getProfessorEmail(profRef.id) }}" class="professor-email">
             {{ getProfessorEmail(profRef.id) }}
           </a>

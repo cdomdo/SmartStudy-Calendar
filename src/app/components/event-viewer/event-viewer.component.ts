@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit, signal} from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import Event from "../../interfaces/event.interface";
 import { EventsService } from "../../services/event.service";
@@ -22,6 +22,7 @@ import { EventsService } from "../../services/event.service";
 export class EventViewerComponent implements OnInit {
   @Input() event?: Event;
   @Output() close = new EventEmitter<void>();
+  openSubjectViewer = signal<any | null>(null);
 
   constructor(private eventsService: EventsService) {}
 

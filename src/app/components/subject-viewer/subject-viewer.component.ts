@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 interface Professor {
   id: string;
@@ -23,23 +23,14 @@ interface Course {
   styleUrls: ['./subject-viewer.component.css']
 })
 export class SubjectViewerComponent implements OnInit {
-  selectedCourse?: Course;
+  @Input() selectedCourse?: Course; // Ahora acepta un curso como entrada
   professors: Professor[] = [
     { id: 'prof1', name: 'Profesor Uno', email: 'prof1@example.com' },
     { id: 'prof2', name: 'Profesor Dos', email: 'prof2@example.com' },
     { id: 'prof3', name: 'Profesor Tres', email: 'prof3@example.com' }
   ];
 
-  constructor() {}
-
-  ngOnInit(): void {
-    this.selectedCourse = {
-      id: '1',
-      name: 'Curso 1',
-      description: 'Descripción del Curso 1',
-      professorsRefs: [{id: 'prof1'}, {id: 'prof2'}]
-    };
-  }
+  ngOnInit(): void {}
 
   getProfessorName(profRef: DocumentReference<Professor>): string {
     const professor = this.professors.find(prof => prof.id === profRef.id);
@@ -52,5 +43,6 @@ export class SubjectViewerComponent implements OnInit {
   }
 
   closeDialog() {
+    // Implementa la lógica para cerrar este componente, por ejemplo, emitiendo un evento o cambiando una variable booleana en el componente padre
   }
 }
