@@ -48,18 +48,19 @@ export class EventCreatorComponent implements OnInit {
       name: ['', Validators.required],
       date: ['', Validators.required],
       time: ['', Validators.required],
-      course: ['', Validators.required],
+      course: [this.courses.length > 0 ? this.courses[0].id : '', Validators.required], // Establece un valor predeterminado para 'course'
       description: ['']
     });
   }
 
   loadCourses(): void {
-    this.isLoadingCourses = true; // Empieza la carga
+    this.isLoadingCourses = true;
     this.courseService.getAllCourses().subscribe(courses => {
       this.courses = courses;
-      this.isLoadingCourses = false; // Termina la carga
+      this.initializeForm(); // Inicializa el formulario después de cargar los cursos
+      this.isLoadingCourses = false;
     }, () => {
-      this.isLoadingCourses = false; // Asegura finalizar la carga en caso de error
+      this.isLoadingCourses = false; // Maneja el caso de error
     });
   }
 
@@ -73,7 +74,7 @@ export class EventCreatorComponent implements OnInit {
         name: formValue.name,
         date: eventDateTime,
         description: formValue.description,
-        courseRef: courseRef // Usando la referencia al curso
+        courseRef: courseRef
       };
 
       this.eventsService.addEvent(newEvent).then(() => {
@@ -88,6 +89,7 @@ export class EventCreatorComponent implements OnInit {
       window.alert('Por favor, completa todos los campos requeridos.');
     }
   }
+
 
 
   manageSubjects(): void {

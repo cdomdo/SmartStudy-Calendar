@@ -4,7 +4,7 @@ import Event from "../../interfaces/event.interface";
 import { EventsService } from "../../services/event.service";
 import Course from "../../interfaces/course.interface";
 
-@Component({
+@Component( {
   selector: 'app-event-viewer',
   templateUrl: './event-viewer.component.html',
   styleUrls: ['./event-viewer.component.css'],
