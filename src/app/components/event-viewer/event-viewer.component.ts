@@ -23,8 +23,13 @@ import Course from "../../interfaces/course.interface";
 export class EventViewerComponent implements OnInit {
   @Input() event?: Event;
   @Output() close = new EventEmitter<void>();
-  showSubjectViewer: boolean = false; // Controla la visibilidad de SubjectViewerComponent
-  selectedCourse?: Course; // Almacena el curso seleccionado para pasarlo a SubjectViewerComponent
+  @Output() editRequested = new EventEmitter<Event>();
+  showSubjectViewer: boolean = false;
+  selectedCourse?: Course;
+  eventToEdit?: Event;
+  showEventEditor = false;
+
+
 
   constructor(private eventsService: EventsService) {}
 
@@ -35,6 +40,9 @@ export class EventViewerComponent implements OnInit {
       this.selectedCourse = this.event.course; // Asume que event.course es del tipo Course
       this.showSubjectViewer = true;
     }
+  }
+  toggleEventEditor() {
+    this.showEventEditor = !this.showEventEditor;
   }
 
   closeDialog() {
@@ -53,5 +61,16 @@ export class EventViewerComponent implements OnInit {
   }
 
   editEvent() {
+    this.showEventEditor = true;
+  }
+
+  onEditRequested(event: Event) {
+    this.eventToEdit = event;
+    this.showEventEditor = true;
+  }
+
+  closeEventEditor() {
+    this.showEventEditor = false;
+    this.eventToEdit = undefined;
   }
 }

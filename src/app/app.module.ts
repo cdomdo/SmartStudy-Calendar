@@ -20,6 +20,7 @@ import { ProfessorCreatorComponent } from './components/professor-creator/profes
 import { ProfessorManagerComponent } from './components/professor-manager/professor-manager.component';
 import { SubjectCreatorComponent } from './components/subject-creator/subject-creator.component';
 import { LoginregisterComponent } from './loginregister/loginregister.component';
+import { EventListViewerComponent } from './components/event-list-viewer/event-list-viewer.component';
 
 
 
@@ -37,7 +38,8 @@ import { LoginregisterComponent } from './loginregister/loginregister.component'
     ProfessorManagerComponent,
     SubjectEditorComponent,
     SubjectCreatorComponent,
-    LoginregisterComponent
+    LoginregisterComponent,
+    EventListViewerComponent
   ],
   imports: [
     BrowserModule,

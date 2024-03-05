@@ -1,0 +1,15 @@
+<!-- event-list-viewer.component.html -->
+<div class="event-list-viewer-overlay">
+  <div class="event-list-viewer-container">
+    <div class="header">
+      <h2>{{ currentDate.toDate() | date: 'd MMM' }}</h2>
+      <span class="close-button" (click)="closeDialog()">X</span>
+    </div>
+    <div class="event-list">
+      <div class="event-card" *ngFor="let event of events">
+        <span class="event-info">{{ event.course?.name }} - {{ event.name }}</span>
+        <span class="event-time">{{ event.date.toDate() | date: 'h:mm a' }}</span>
+      </div>
+    </div>
+  </div>
+</div>
