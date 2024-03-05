@@ -23,9 +23,20 @@
   overflow: auto;
 }
 
+h2, h4 {
+  font-family: 'Poppins', sans-serif;
+}
+
 h2 {
-  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   margin-bottom: 20px;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 1em;
+  color: #333;
 }
 
 .form-group {
@@ -36,6 +47,7 @@ label {
   display: block;
   margin-bottom: 5px;
   font-family: 'Roboto', sans-serif;
+  font-weight: bold;
 }
 
 input[type="text"],
@@ -48,6 +60,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }
 
 .form-footer {
@@ -56,23 +69,27 @@ textarea {
   margin-top: 20px;
 }
 
-button[type="submit"] {
+.btn-confirm {
   background-color: #f5cb5c;
   color: white;
-  padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 50%; /* Hace el botón completamente redondo */
   cursor: pointer;
-  font-family: 'Roboto', sans-serif;
+  width: 48px; /* Establece un tamaño específico para el botón */
+  height: 48px; /* Igual al ancho para mantener la forma circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px; /* Ajusta según el tamaño del ícono */
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button[type="submit"]:hover {
+.btn-confirm:hover {
   background-color: rgba(56, 61, 65, 0.68);
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
-button[type="submit"]:disabled {
+.btn-confirm:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }

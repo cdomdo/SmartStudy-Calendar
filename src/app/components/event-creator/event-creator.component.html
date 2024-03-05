@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <div class="event-creator-overlay" @dialog>
   <div class="event-creator-container">
     <span class="close-button" (click)="closeDialog()">&#10005;</span>
@@ -26,8 +28,12 @@
         <textarea id="eventDescription" formControlName="description" class="form-control textarea"></textarea>
       </div>
       <div class="action-buttons">
-        <button type="button" class="btn btn-secondary" (click)="manageSubjects()">Gestionar asignaturas</button>
-        <button class="btn-primary" [disabled]="isLoadingCourses">Crear Evento</button>
+        <button type="button" class="icon-button" (click)="manageSubjects()">
+          <i class="fas fa-cog"></i> Gestionar asignaturas
+        </button>
+        <button class="icon-button btn-primary" [disabled]="isLoadingCourses">
+          <i class="fas fa-check"></i> Crear Evento
+        </button>
       </div>
     </form>
   </div>

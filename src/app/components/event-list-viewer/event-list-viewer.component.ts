@@ -91,4 +91,8 @@ export class EventListViewerComponent {
   closeDialog() {
     this.close.emit();
   }
+
+  onEventClick(event: Event) {
+
+  }
 }

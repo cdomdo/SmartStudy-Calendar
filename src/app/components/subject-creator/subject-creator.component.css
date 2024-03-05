@@ -1,7 +1,7 @@
-* {
-  font-family: 'Roboto', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
 .event-creator-overlay {
+  font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,77 +16,75 @@
 .event-creator-container {
   background-color: #fff;
   padding: 20px;
-  border-radius: 15px; /* Bordes redondeados para el contenedor */
+  border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px; /* Ancho fijo */
-  max-width: 100%; /* Asegura que no exceda el ancho del viewport */
-  position: relative; /* Permite posicionar absolutamente el botón de cierre */
+  width: 500px;
+  max-width: 90%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
+
+.dialog-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-button {
+  cursor: pointer;
+  font-size: 30px;
+  color: #666;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 1em;
+  color: #333;
+}
+
 
 .form-group label {
   display: block;
   margin-bottom: 5px;
 }
 
-.form-control {
-  width: 100%; /* Asegura que cada caja de texto/elección tenga el mismo ancho */
+.form-control, .form-control.textarea {
+  width: 100%;
   padding: 8px;
   margin-bottom: 1em;
-  border-radius: 4px; /* Bordes ligeramente redondeados para las cajas de texto/elección */
+  border-radius: 4px;
   border: 1px solid #ced4da;
 }
 
-/* Específicamente para el textarea de descripción */
-.form-control.textarea {
-  height: 150px; /* Ajusta la altura para dar más espacio */
-  resize: vertical; /* Permite al usuario ajustar la altura si lo necesita */
-}
-
-
-.btn-secondary, .btn-primary {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 25px; /* Botones redondeados */
-  font-weight: 500;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 10px 5px; /* Espaciado entre botones */
-  display: inline-block; /* Asegura que los botones no se extiendan más allá de su contenido */
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268;
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
 }
 
 .btn-primary {
   background-color: rgb(245, 203, 92);
   color: white;
+  padding: 10px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: rgba(245, 203, 92, 0.71);
-}
-
-.action-buttons {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.close-button {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  cursor: pointer;
-  font-size: 24px;
-  color: #666;
-}
-
-.close-button:hover {
-  color: #333;
+  background-color: rgba(245, 203, 92, 0.8);
 }

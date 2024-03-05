@@ -12,19 +12,28 @@
 }
 
 .event-content {
-  position: relative;
   background-color: #fff;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   max-width: 600px;
   width: 80%;
+  position: relative;
 }
 
+h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+
 .top-buttons {
-  position: absolute;
   right: 10px;
   top: 10px;
+  position: absolute;
   display: flex;
   align-items: center;
 }
@@ -44,10 +53,10 @@
 
 .icon-button:hover i, .close-button:hover {
   color: #333;
-  transform: translateY(-3px);
+  transform: scale(1.1);
 }
 
-h2, .event-date, .course-name, .event-description {
+h4, .event-date, .course-name, .event-description {
   margin-bottom: 0.5em;
 }
 
@@ -57,8 +66,8 @@ h2, .event-date, .course-name, .event-description {
 }
 
 .course-name {
-  font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
   margin-top: 1em;
   margin-bottom: 0.3em;
   position: relative;
@@ -69,13 +78,11 @@ h2, .event-date, .course-name, .event-description {
   content: '';
   position: absolute;
   left: 0;
-  right: 0;
   bottom: -5px;
   height: 2px;
-  background: currentColor;
-  transition: all 0.1s ease-in-out;
-  width: 0%;
   background-color: #000;
+  transition: width 0.2s ease-in-out;
+  width: 0%;
 }
 
 .course-name:hover::after {
@@ -83,18 +90,13 @@ h2, .event-date, .course-name, .event-description {
 }
 
 .event-description {
-  font-size: 1em;
   color: #444;
 }
 
-.edit i, .delete i {
-  margin-right: 4px;
-}
-
 .edit i {
-  color: rgb(245, 203, 92);
+  color: #f5cb5c;
 }
 
 .delete i {
-  color: rgba(56, 61, 65, 0.68);
+  color: #383d41;
 }
