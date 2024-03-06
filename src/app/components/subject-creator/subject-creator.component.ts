@@ -22,7 +22,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class SubjectCreatorComponent implements OnInit {
   courseForm!: FormGroup;
-  @Output() close = new EventEmitter<void>(); // Añadir aquí
+  @Output() close = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder, private courseService: CourseService) {}
 

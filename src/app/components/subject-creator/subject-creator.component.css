@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-.event-creator-overlay {
-  font-family: 'Poppins', sans-serif;
+.subject-creator-overlay {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,26 +13,70 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.event-creator-container {
+.subject-creator-container {
   background-color: #fff;
   padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 500px;
-  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 600px;
+  max-height: 80%;
   position: relative;
-  display: flex;
-  flex-direction: column;
+  overflow: auto;
 }
 
-.dialog-header {
+/* Styles for form elements */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 23px;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Button Styles */
+.btn-primary {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #f5cb5c;
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #242423;
+  color: white;
 }
 
 .close-button {
   cursor: pointer;
-  font-size: 30px;
+  font-size: 24px;
   color: #666;
   position: absolute;
   right: 20px;
@@ -43,48 +87,8 @@
   color: #333;
 }
 
-h4 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  margin-bottom: 1em;
-  color: #333;
-}
-
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.form-control, .form-control.textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 1em;
-  border-radius: 4px;
-  border: 1px solid #ced4da;
-}
-
 .action-buttons {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
-}
-
-.btn-primary {
-  background-color: rgb(245, 203, 92);
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: rgba(245, 203, 92, 0.8);
 }

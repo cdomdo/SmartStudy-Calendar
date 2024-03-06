@@ -1,25 +1,29 @@
-<div @dialog class="subject-editor-overlay">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<div class="subject-editor-overlay" [@dialog]>
   <div class="subject-editor-container">
-    <span class="close-button" (click)="closeDialog()">&#10005;</span>
-    <h5>Editar asignatura</h5>
+    <span class="close-button" (click)="closeDialog()"><i class="fas fa-times"></i></span>
+    <h4>Editar asignatura</h4>
     <form [formGroup]="courseForm" (ngSubmit)="saveCourse()">
       <div class="form-group">
         <label for="name">Nombre:</label>
-        <input id="name" type="text" formControlName="name">
+        <input id="name" type="text" formControlName="name" class="form-control">
       </div>
       <div class="form-group">
         <label for="description">Descripción:</label>
-        <textarea id="description" formControlName="description"></textarea>
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
       </div>
-      <button type="button" (click)="addProfessor()" class="btn-add">Añadir Profesor</button>
-      <div class="professors-container" formArrayName="professors">
-        <div *ngFor="let professor of professors.controls; let i=index" [formGroupName]="i" class="professor-item">
-          <p>{{ professor?.get('name')?.value }}</p>
-          <button type="button" class="btn-edit" (click)="editProfessor(i)">Editar Profesor</button>
-          <button type="button" class="btn-delete" (click)="removeProfessor(i)">Eliminar Profesor</button>
+      <div class="action-buttons">
+        <button type="button" (click)="addProfessor()" class="btn btn-add"><i class="fas fa-plus"></i> Añadir Profesor</button>
+        <div class="professors-container" formArrayName="professors">
+          <div *ngFor="let professor of professors.controls; let i = index" [formGroupName]="i" class="professor-item">
+            <p>{{ professor?.get('name')?.value }}</p>
+            <button type="button" class="btn btn-edit" (click)="editProfessor(i)"><i class="fas fa-edit"></i> Editar Profesor</button>
+            <button type="button" class="btn btn-delete" (click)="removeProfessor(i)"><i class="fas fa-trash"></i> Eliminar Profesor</button>
+          </div>
         </div>
+        <button type="submit" class="btn btn-save btn-primary"><i class="fas fa-save"></i> Guardar Cambios</button>
       </div>
-      <button type="submit" class="btn-save">Guardar Cambios</button>
     </form>
   </div>
 </div>

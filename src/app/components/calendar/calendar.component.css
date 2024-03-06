@@ -26,6 +26,10 @@
   justify-content: center;
 }
 
+.date-number:hover, .events-list li:hover {
+  cursor: pointer;
+}
+
 .calendar-header button:before {
   font-family: 'Material Icons';
   content: attr(data-icon);

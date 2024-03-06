@@ -1,4 +1,3 @@
-<!-- calendar.component.html -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -11,22 +10,21 @@
       {{ currentMonth.toDate() | date: 'MMMM yyyy' }}
     </div>
     <div>
-    <button (click)="createEvent()">
-      <span class="material-icons">add</span>
-    </button>
-    <button (click)="changeMonth(1)">
-      <span class="material-icons">chevron_right</span>
-    </button>
+      <button (click)="createEvent()">
+        <span class="material-icons">add</span>
+      </button>
+      <button (click)="changeMonth(1)">
+        <span class="material-icons">chevron_right</span>
+      </button>
     </div>
   </div>
-
 
   <div class="week-days row">
     <div class="col text-center" *ngFor="let dayName of weekDays">{{ dayName }}</div>
   </div>
   <div *ngFor="let week of weeks" class="row">
-    <div class="day col" *ngFor="let date of week" [ngClass]="{'today': isToday(date)}">
-      <div *ngIf="date" class="date-number">{{ date.toDate().getDate() }}</div>
+    <div class="day col" *ngFor="let date of week" [ngClass]="{'today': isToday(date), 'has-events': hasEvents(date)}">
+      <div *ngIf="date" class="date-number" (click)="dayClicked(date)">{{ date.toDate().getDate() }}</div>
       <ul *ngIf="date" class="events-list">
         <ng-container *ngFor="let event of events">
           <li *ngIf="isSameDay(event.date, date)" (click)="selectEvent(event)">
@@ -38,5 +36,6 @@
   </div>
 </div>
 
-<app-event-viewer *ngIf="selectedEvent" [event]="selectedEvent" (close)="onViewerClose()"></app-event-viewer>
 <app-event-creator *ngIf="showEventCreator" (eventCreated)="onEventCreated($event)" (close)="closeDialog()"></app-event-creator>
+<app-event-list-viewer *ngIf="showEventViewer" [events]="selectedEvents" (eventSelected)="handleEventSelected($event)" (close)="onEventViewerClose()"></app-event-list-viewer>
+<app-event-viewer *ngIf="selectedEvent" [event]="selectedEvent" (close)="onViewerClose()"></app-event-viewer>
