@@ -19,10 +19,9 @@ import { SubjectEditorComponent } from './components/subject-editor/subject-edit
 import { ProfessorCreatorComponent } from './components/professor-creator/professor-creator.component';
 import { ProfessorManagerComponent } from './components/professor-manager/professor-manager.component';
 import { SubjectCreatorComponent } from './components/subject-creator/subject-creator.component';
-import { LoginregisterComponent } from './loginregister/loginregister.component';
 import { EventListViewerComponent } from './components/event-list-viewer/event-list-viewer.component';
-
-
+import { LoginregisterComponent } from './components/loginregister/loginregister.component';
+import {AngularFireModule} from "@angular/fire/compat";
 
 @NgModule({
   declarations: [
@@ -44,6 +43,7 @@ import { EventListViewerComponent } from './components/event-list-viewer/event-l
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
