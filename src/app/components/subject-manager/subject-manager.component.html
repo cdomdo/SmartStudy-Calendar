@@ -7,10 +7,10 @@
     <div class="courses-list-container">
       <div class="courses-list">
         <ul>
-          <li *ngFor="let course of courses" (click)="selectCourse(course)" [class.selected]="selectedCourse?.id === course.id">
+          <li *ngFor="let course of courses" [class.selected]="selectedCourse?.id === course.id">
             {{ course.name }}
-            <span class="icon-button" (click)="editSelectedCourse()"><i class="fas fa-edit"></i></span>
-            <span class="icon-button" (click)="deleteSelectedCourse()"><i class="fas fa-trash"></i></span>
+            <span class="icon-button" (click)="editSelectedCourse($event, course)"><i class="fas fa-edit"></i></span>
+            <span class="icon-button" (click)="deleteSelectedCourse($event, course)"><i class="fas fa-trash"></i></span>
           </li>
         </ul>
       </div>

@@ -14,5 +14,5 @@
     <p class="event-description">{{ event.description }}</p>
   </div>
   <app-subject-viewer *ngIf="showSubjectViewer" [selectedCourse]="selectedCourse" (close)="showSubjectViewer=false"></app-subject-viewer>
-  <app-event-editor *ngIf="showEventEditor" [event]="event" (closeEditor)="toggleEventEditor()"></app-event-editor>
+  <app-event-editor *ngIf="showEventEditor" [event]="event" (closeEditor)="closeDialog()"></app-event-editor>
 </div>

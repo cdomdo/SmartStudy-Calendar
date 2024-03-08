@@ -69,6 +69,7 @@ export class EventViewerComponent implements OnInit {
     this.showEventEditor = true;
   }
 
+
   closeEventEditor() {
     this.showEventEditor = false;
     this.eventToEdit = undefined;

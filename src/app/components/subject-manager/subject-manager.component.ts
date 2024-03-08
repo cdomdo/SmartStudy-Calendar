@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CourseService } from '../../services/course.service';
 import Course from '../../interfaces/course.interface';
-import {animate, style, transition, trigger} from "@angular/animations";
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-subject-manager',
@@ -19,7 +19,6 @@ import {animate, style, transition, trigger} from "@angular/animations";
     ])
   ]
 })
-
 export class SubjectManagerComponent implements OnInit {
   courses: Course[] = [];
   selectedCourse: Course | null = null;
@@ -40,43 +39,44 @@ export class SubjectManagerComponent implements OnInit {
     });
   }
 
-  selectCourse(course: Course): void {
+  editSelectedCourse(event: MouseEvent, course: Course): void {
+    event.stopPropagation();
     this.selectedCourse = course;
+    this.showEditor = true;
   }
 
-  deleteSelectedCourse(): void {
-    if (!this.selectedCourse || typeof this.selectedCourse.id === 'undefined') {
-      alert('No course selected for deletion.');
+  deleteSelectedCourse(event: MouseEvent, course: Course): void {
+    event.stopPropagation();
+    if (typeof course.id === 'undefined') {
+      alert('El curso no tiene un ID válido.');
       return;
     }
+
     const confirmDeletion = confirm('¿Estás seguro de que quieres borrar esta asignatura?');
     if (!confirmDeletion) {
       return;
     }
-    this.courseService.deleteCourse(this.selectedCourse.id).then(() => {
-      this.courses = this.courses.filter(course => course.id !== this.selectedCourse?.id);
+
+    this.courseService.deleteCourse(course.id).then(() => {
+      this.courses = this.courses.filter(c => c.id !== course.id);
       this.selectedCourse = null;
     }).catch(error => {
       alert('Failed to delete the course.');
     });
   }
 
-  editSelectedCourse(): void {
-    this.showEditor = true;
-  }
-
   createCourse(): void {
-    this.showCreator = true; // Muestra el diálogo de creación de curso
+    this.showCreator = true;
   }
 
   closeCreator(): void {
-    this.showCreator = false; // Cierra el diálogo y posiblemente recarga los cursos
+    this.showCreator = false;
     this.loadCourses();
   }
 
   closeEditor(): void {
     this.showEditor = false;
-    this.loadCourses(); // Recargar los cursos después de cerrar el editor
+    this.loadCourses();
   }
 
   closeDialog(): void {

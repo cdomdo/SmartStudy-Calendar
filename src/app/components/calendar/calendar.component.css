@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
+
 .calendar-container {
   width: 95%;
   max-width: 1200px;
@@ -26,30 +29,9 @@
   justify-content: center;
 }
 
-.date-number:hover, .events-list li:hover {
-  cursor: pointer;
-}
-
-.calendar-header button:before {
-  font-family: 'Material Icons';
-  content: attr(data-icon);
-  font-size: 30px;
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.calendar-header button:hover:before {
-  transform: translateX(5px);
-}
-
-.calendar-header button[data-icon="chevron_left"]:hover:before {
-  transform: translateX(-5px);
-}
-
 .week-days {
   display: flex;
   background-color: #e0e0e0;
-  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 16px;
 }
@@ -71,8 +53,9 @@
   flex-direction: column;
   position: relative;
   border-right: 1px solid #e0e0e0;
-  min-height: 120px; /* Se mantiene la altura ajustada */
+  min-height: 120px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .day:last-child {
@@ -85,18 +68,18 @@
 }
 
 .events-list {
-  list-style-type: disc; /* Mantenemos los bullets */
-  padding-left: 20px; /* Alineación de los bullets */
-  margin-top: 5px; /* Espacio adicional desde la fecha hasta el primer evento */
+  list-style-type: none;
+  padding-left: 20px;
+  margin-top: 5px;
 }
 
 .events-list li {
   font-size: 0.75rem;
   margin-bottom: 2px;
-  background-color: rgba(0, 0, 0, 0.1); /* Sombreado translúcido */
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   padding: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra suave */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .day.today::before {
@@ -109,54 +92,73 @@
   height: 30px;
   border-radius: 50%;
   background-color: rgba(255, 0, 0, 0.44);
-  z-index: 1;
+  z-index: 0;
 }
 
-/* Animaciones para el cambio de mes */
-@keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideOut {
-  from { transform: translateX(0); opacity: 1; }
-  to { transform: translateX(-100%); opacity: 0; }
-}
-
-.animate-in { animation: slideIn 0.1s forwards; }
-.animate-out { animation: slideOut 0.1s forwards; }
-
-.fade-out, .fade-in { transition: opacity 0.5s ease; }
-
-.fade-out { animation: fadeOutAnimation 0.5s forwards; }
-.fade-in { animation: fadeInAnimation 0.5s forwards; }
-
-@keyframes fadeOutAnimation { from { opacity: 1; } to { opacity: 0; } }
-@keyframes fadeInAnimation { from { opacity: 0; } to { opacity: 1; } }
-
-/* Ajustes para diseño responsive */
 @media (max-width: 768px) {
-  .day {
-    min-height: 100px; /* Altura reducida para pantallas más pequeñas */
+  .day, .week-days .day {
+    min-height: 100px;
+  }
+
+  .day div.date-number {
+    font-size: 16px;
+  }
+
+  .events-list li {
+    font-size: 0.65rem;
   }
 }
 
 @media (max-width: 480px) {
   .calendar-container {
     width: 100%;
-    max-width: none;
+    margin: 20px auto;
   }
 
   .week-days .day, .week .day {
-    flex: 1 0 100%; /* Ajusta para que cada día ocupe toda la fila */
+    flex: 1 0 14.28%;
+  }
+
+  .day, .week-days .day {
+    min-height: 80px;
+  }
+
+  .day div.date-number, .events-list li {
+    font-size: 14px;
   }
 }
 
-.events-list li {
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Opcional: añade una transición suave para el hover */
+@media (max-width: 400px) {
+  .calendar-header, .week-days .day, .day div.date-number, .events-list li {
+    font-size: 12px;
+  }
+
+  .calendar-header {
+    padding: 10px;
+  }
+
+  .events-list li {
+    padding: 3px;
+    margin-bottom: 1px;
+  }
+
+  .day {
+    min-height: 70px;
+  }
+
+  .day div.date-number {
+    margin-bottom: 1px;
+  }
 }
 
-.events-list li:hover {
-  background-color: #f0f0f0; /* Cambia el color de fondo al pasar el mouse por encima, opcional */
+.monthTransition {
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
 }
