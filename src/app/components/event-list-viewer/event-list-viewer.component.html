@@ -1,0 +1,21 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<div class="event-list-viewer-overlay">
+  <div class="event-list-viewer-container" [@dialog]>
+    <div class="header">
+      <h2>Eventos</h2>
+      <span class="close-button" (click)="closeDialog()">
+        <i class="material-icons">close</i>
+      </span>
+    </div>
+    <div class="event-list">
+      <div class="event-card" *ngFor="let event of events" (click)="onEventClick(event)">
+        <div>
+          <div class="event-date">{{ event.date.toDate() | date: 'd MMM y' }}</div>
+          <span class="event-info">{{ event.course?.name }} - {{ event.name }}</span>
+        </div>
+        <span class="event-time">{{ event.date.toDate() | date: 'h:mm a' }}</span>
+      </div>
+    </div>
+  </div>
+</div>

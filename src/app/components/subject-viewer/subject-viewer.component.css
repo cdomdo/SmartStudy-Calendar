@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 .subject-viewer-overlay {
-  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,65 +10,62 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  font-family: 'Poppins', sans-serif;
 }
 
 .subject-viewer-container {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 500px; /* Ancho fijo */
-  max-height: 80%; /* Altura máxima para permitir adaptación */
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
   position: relative;
   display: flex;
   flex-direction: column;
-  overflow: auto; /* Permite el desplazamiento si el contenido excede la altura máxima */
+  overflow: hidden;
 }
 
-h2 {
-  margin-bottom: 10px; /* Reduce el espacio entre el título y la descripción */
+h5 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 0.8em;
+  color: #333;
 }
 
-.course-details h3, .course-details h4, ul, li {
-  margin: 0;
-  padding: 0;
+.course-details p {
+  font-weight: 400;
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 0.5em;
+  line-height: 1.4;
+}
+
+
+.course-details h6 {
+  font-size: 0.9em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
 }
 
 ul {
   list-style-type: none;
-  padding-left: 0; /* Asegura que no haya indentación en la lista */
+  padding: 0;
 }
 
 li {
-  margin-bottom: 15px; /* Aumenta el espacio entre los elementos de la lista */
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 10px;
 }
 
 .professor-email {
-  display: block; /* Asegura que el email se muestre debajo del nombre */
-  font-family: 'Arial', sans-serif;
-  font-size: 0.9em;
-  color: #555;
-  text-decoration: none; /* Mantiene los enlaces sin subrayar por defecto */
-  position: relative; /* Posicionamiento relativo para el efecto de subrayado */
-  overflow: hidden; /* Asegura que el efecto no se desborde */
+  color: #4B6587;
+  text-decoration: none;
 }
 
-.professor-email::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  bottom: -1px;
-  left: 0;
-  background-color: #555;
-  transform: scaleX(0);
-  transform-origin: bottom right;
-  transition: transform 0.3s ease-out;
-}
-
-.professor-email:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+.professor-email:hover {
+  text-decoration: underline;
 }
 
 .close-button {
@@ -75,8 +73,8 @@ li {
   font-size: 24px;
   color: #666;
   position: absolute;
-  right: 20px;
-  top: 10px; /* Ajusta para más espacio entre el título y la X */
+  right: 15px;
+  top: 15px;
 }
 
 .close-button:hover {

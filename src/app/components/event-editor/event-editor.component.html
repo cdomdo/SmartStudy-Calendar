@@ -1,1 +1,44 @@
-<p>event-editor works!</p>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+<div class="event-editor-overlay">
+  <div class="event-editor-container" [@dialog]>
+    <span class="close-button" (click)="closeDialog()">&#10005;</span>
+    <form [formGroup]="eventForm" (ngSubmit)="updateEvent()">
+      <h4>Editar evento</h4>
+
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" formControlName="name">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea id="description" formControlName="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="date">Fecha:</label>
+        <input type="date" id="date" formControlName="date">
+      </div>
+
+      <div class="form-group">
+        <label for="time">Hora:</label>
+        <input type="time" id="time" formControlName="time">
+      </div>
+
+      <div class="form-group">
+        <label for="course">Asignatura:</label>
+        <select id="course" formControlName="course">
+          <option *ngFor="let course of courses" [value]="course.id">{{course.name}}</option>
+        </select>
+      </div>
+
+      <div class="form-footer">
+        <button type="submit" class="btn-confirm" [disabled]="!eventForm.valid">
+          <i class="fas fa-check"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

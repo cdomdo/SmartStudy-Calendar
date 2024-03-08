@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
-import {Firestore, collection, collectionData, doc, docData, deleteDoc, updateDoc} from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  doc,
+  docData,
+  deleteDoc,
+  updateDoc,
+  addDoc
+} from '@angular/fire/firestore';
 import { Observable, combineLatest, of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import  Event  from '../interfaces/event.interface';
@@ -11,7 +20,6 @@ import  Course  from '../interfaces/course.interface';
 export class EventsService {
   constructor(private firestore: Firestore) {}
 
-  // Returns all events with its associated Course object
   getEventsWithCourse(): Observable<(Event & { course?: Course })[]> {
     const eventsRef = collection(this.firestore, 'events');
     return (collectionData(eventsRef, { idField: 'id' }) as Observable<Event[]>).pipe(
@@ -38,13 +46,21 @@ export class EventsService {
     );
   }
 
-  // Modifies an existing event
   modifyEvent(eventId: string, eventData: Partial<Event>): Promise<void> {
     const eventRef = doc(this.firestore, 'events', eventId);
     return updateDoc(eventRef, eventData);
   }
 
-  // Deletes an existing event
+  addEvent(eventData: Event): Promise<void> {
+    const eventsRef = collection(this.firestore, 'events');
+    return addDoc(eventsRef, eventData).then(docRef => {
+      const eventDocRef = doc(this.firestore, 'events', docRef.id);
+      return updateDoc(eventDocRef, { id: docRef.id });
+    }).catch(error => {
+      throw new Error("Error al crear el evento");
+    });
+  }
+
   deleteEvent(eventId: string): Promise<void> {
     const eventRef = doc(this.firestore, 'events', eventId);
     return deleteDoc(eventRef);

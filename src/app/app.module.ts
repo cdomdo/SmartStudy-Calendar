@@ -19,10 +19,9 @@ import { SubjectEditorComponent } from './components/subject-editor/subject-edit
 import { ProfessorCreatorComponent } from './components/professor-creator/professor-creator.component';
 import { ProfessorManagerComponent } from './components/professor-manager/professor-manager.component';
 import { SubjectCreatorComponent } from './components/subject-creator/subject-creator.component';
+import { EventListViewerComponent } from './components/event-list-viewer/event-list-viewer.component';
 import { LoginregisterComponent } from './components/loginregister/loginregister.component';
 import {AngularFireModule} from "@angular/fire/compat";
-
-
 
 @NgModule({
   declarations: [
@@ -38,7 +37,8 @@ import {AngularFireModule} from "@angular/fire/compat";
     ProfessorManagerComponent,
     SubjectEditorComponent,
     SubjectCreatorComponent,
-    LoginregisterComponent
+    LoginregisterComponent,
+    EventListViewerComponent
   ],
   imports: [
     BrowserModule,

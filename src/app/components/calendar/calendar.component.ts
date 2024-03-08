@@ -15,10 +15,12 @@ export class CalendarComponent implements OnInit, OnDestroy {
   currentMonth: Timestamp = Timestamp.fromDate(new Date());
   today: Timestamp = Timestamp.now();
   monthTransition: string = '';
-  events: (Event & { courseName?: string })[] = [];
+  events: Event[] = [];
   selectedEvent?: Event;
+  selectedEvents: Event[] = [];
+  showEventCreator: boolean = false;
+  showEventViewer: boolean = false;
   private eventsSub: Subscription = new Subscription();
-  showEventCreator: boolean = false; // Control para mostrar/ocultar el creador de eventos
 
   constructor(private eventsService: EventsService) {}
 
@@ -75,7 +77,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
   }
 
   isSameDay(date1: Timestamp, date2: Timestamp): boolean {
-    // Compara fechas utilizando Timestamp
     return date1.toDate().toDateString() === date2.toDate().toDateString();
   }
 
@@ -95,7 +96,37 @@ export class CalendarComponent implements OnInit, OnDestroy {
     this.showEventCreator = false;
   }
 
+  dayClicked(date: Timestamp | null): void {
+    if (!date) return;
+    const eventsOfDay = this.events.filter(event => this.isSameDay(event.date, date));
+    if (eventsOfDay.length > 0) {
+      this.selectedEvents = eventsOfDay;
+      this.showEventViewer = true;
+    }
+  }
+
+  openEventViewer(events: Event[]): void {
+    this.selectedEvents = events;
+    this.showEventViewer = true;
+  }
+  hasEvents(date: Timestamp | null): boolean {
+    return date ? this.events.some(event => this.isSameDay(event.date, date)) : false;
+  }
+
+
+  handleEventSelected(selectedEvent: Event): void {
+    this.selectedEvent = selectedEvent;
+    this.showEventViewer = false;
+  }
+
+  onEventViewerClose(): void {
+    this.selectedEvent = undefined;
+    this.showEventViewer = false;
+  }
+
+
   closeDialog(): void {
     this.showEventCreator = false;
+    this.showEventViewer = false;
   }
 }

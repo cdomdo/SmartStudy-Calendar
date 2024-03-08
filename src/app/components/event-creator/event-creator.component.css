@@ -1,6 +1,7 @@
 * {
   font-family: 'Roboto', sans-serif;
 }
+
 .event-creator-overlay {
   display: flex;
   justify-content: center;
@@ -13,46 +14,70 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 1em;
+  color: #333;
+}
+
 .event-creator-container {
   background-color: #fff;
   padding: 20px;
-  border-radius: 15px; /* Bordes redondeados para el contenedor */
+  border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: auto;
-  max-width: 500px; /* Asegura un ancho máximo para uniformidad */
-  position: relative; /* Permite posicionar absolutamente el botón de cierre */
+  max-width: 500px;
+  position: relative;
 }
 
-.form-group label {
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
   display: block;
   margin-bottom: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 .form-control {
-  width: 100%; /* Asegura que cada caja de texto/elección tenga el mismo ancho */
+  width: 100%;
   padding: 8px;
   margin-bottom: 1em;
-  border-radius: 4px; /* Bordes ligeramente redondeados para las cajas de texto/elección */
+  border-radius: 4px;
   border: 1px solid #ced4da;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }
 
-/* Específicamente para el textarea de descripción */
-.form-control.textarea {
-  height: 150px; /* Ajusta la altura para dar más espacio */
-  resize: vertical; /* Permite al usuario ajustar la altura si lo necesita */
+.action-buttons {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
-
-.btn-secondary, .btn-primary {
-  padding: 10px 20px;
+.icon-button {
+  background: none;
   border: none;
-  border-radius: 25px; /* Botones redondeados */
-  font-weight: 500;
-  transition: background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
-  font-size: 16px;
-  margin: 10px 5px; /* Espaciado entre botones */
-  display: inline-block; /* Asegura que los botones no se extiendan más allá de su contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.icon-button:hover {
+  transform: scale(1.1);
 }
 
 .btn-secondary {
@@ -70,20 +95,15 @@
 }
 
 .btn-primary:hover {
-  background-color: rgba(245, 203, 92, 0.71);
-}
-
-.action-buttons {
-  text-align: center;
-  margin-top: 20px;
+  background-color: rgba(245, 203, 92, 0.8);
 }
 
 .close-button {
   position: absolute;
-  right: 20px; /* Ajusta según necesidad para alinear correctamente */
+  right: 20px;
   top: 20px;
   cursor: pointer;
-  font-size: 24px; /* Tamaño adecuado para visibilidad */
+  font-size: 24px;
   color: #666;
 }
 

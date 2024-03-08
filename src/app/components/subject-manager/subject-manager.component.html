@@ -1,24 +1,26 @@
-<div @dialog class="subject-manager-overlay">
-  <div class="subject-manager-container">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<div class="subject-manager-overlay">
+  <div [@dialog] class="subject-manager-container">
     <div class="dialog-header">
       <span class="close-button" (click)="closeDialog()">&#10005;</span>
     </div>
     <div class="courses-list-container">
       <div class="courses-list">
         <ul>
-          <li *ngFor="let course of courses" (click)="selectCourse(course)" [class.selected]="selectedCourse?.id === course.id">
+          <li *ngFor="let course of courses" [class.selected]="selectedCourse?.id === course.id">
             {{ course.name }}
+            <span class="icon-button" (click)="editSelectedCourse($event, course)"><i class="fas fa-edit"></i></span>
+            <span class="icon-button" (click)="deleteSelectedCourse($event, course)"><i class="fas fa-trash"></i></span>
           </li>
         </ul>
       </div>
     </div>
-    <div class="course-actions" *ngIf="selectedCourse">
-      <button class="btn btn-primary" (click)="editSelectedCourse()">Editar</button>
-      <button class="btn btn-secondary" (click)="deleteSelectedCourse()">Eliminar</button>
-    </div>
     <div class="create-course">
-      <button class="btn btn-success" (click)="createCourse()">Crear nueva asignatura</button>
+      <button class="btn-success" (click)="createCourse()">
+        <i class="fas fa-plus"></i>
+      </button>
     </div>
   </div>
 </div>
 <app-subject-editor *ngIf="showEditor" [course]="selectedCourse" (close)="closeEditor()"></app-subject-editor>
+<app-subject-creator *ngIf="showCreator" (close)="closeCreator()"></app-subject-creator>
