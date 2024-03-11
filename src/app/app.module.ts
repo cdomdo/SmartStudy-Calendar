@@ -24,6 +24,8 @@ import { LoginregisterComponent } from './components/loginregister/loginregister
 import {AngularFireModule} from "@angular/fire/compat";
 import {NoteCardComponent} from "./note-card/note-card.component";
 import {NotesComponent} from "./notes/notes.component";
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -54,9 +56,12 @@ import {NotesComponent} from "./notes/notes.component";
         BrowserAnimationsModule,
         CommonModule,
         NoteCardComponent,
-        NotesComponent
+        NotesComponent,
+        DragDropModule
     ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
