@@ -22,6 +22,7 @@ import { SubjectCreatorComponent } from './components/subject-creator/subject-cr
 import { EventListViewerComponent } from './components/event-list-viewer/event-list-viewer.component';
 import { LoginregisterComponent } from './components/loginregister/loginregister.component';
 import {AngularFireModule} from "@angular/fire/compat";
+import { HomeComponent } from './components/website/home/home.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {AngularFireModule} from "@angular/fire/compat";
     SubjectEditorComponent,
     SubjectCreatorComponent,
     LoginregisterComponent,
-    EventListViewerComponent
+    EventListViewerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
