@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import {NoteCardComponent} from "../note-card/note-card.component";
-import {NoteHeaderComponent} from "../note-header/note-header.component";
+import {navbarComponent} from "../notes-nav/note-var.component";
+
 
 @Component({
   selector: 'app-notes',
   standalone: true,
     imports: [
         NoteCardComponent,
-        NoteHeaderComponent
+        navbarComponent,
     ],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.css'

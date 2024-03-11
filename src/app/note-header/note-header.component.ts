@@ -10,6 +10,6 @@ import {NgOptimizedImage} from "@angular/common";
   templateUrl: './note-header.component.html',
   styleUrl: './note-header.component.css'
 })
-export class NoteHeaderComponent {
+export class navbar {
 
 }
