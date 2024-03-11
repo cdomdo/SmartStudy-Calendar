@@ -1,0 +1,4 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en múltiples líneas */
+}

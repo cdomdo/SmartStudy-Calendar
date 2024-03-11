@@ -1,0 +1,9 @@
+.header {
+  background-color: #F5CB5C; /* Color de fondo */
+  border-radius: 10px; /* Todos los bordes redondeados */
+  padding: 1px; /* Espaciado interno */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+  margin: 10px;
+}
+
+

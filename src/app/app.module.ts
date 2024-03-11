@@ -22,6 +22,8 @@ import { SubjectCreatorComponent } from './components/subject-creator/subject-cr
 import { EventListViewerComponent } from './components/event-list-viewer/event-list-viewer.component';
 import { LoginregisterComponent } from './components/loginregister/loginregister.component';
 import {AngularFireModule} from "@angular/fire/compat";
+import {NoteCardComponent} from "./note-card/note-card.component";
+import {NotesComponent} from "./notes/notes.component";
 
 @NgModule({
   declarations: [
@@ -40,18 +42,20 @@ import {AngularFireModule} from "@angular/fire/compat";
     LoginregisterComponent,
     EventListViewerComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    CommonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideFirestore(() => getFirestore()),
+        provideAuth(() => getAuth()),
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        CommonModule,
+        NoteCardComponent,
+        NotesComponent
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
