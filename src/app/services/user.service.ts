@@ -34,4 +34,12 @@ export class UserService {
   logout() {
     return signOut(this.auth);
   }
+
+  getUserEmail() {
+    if (this.auth.currentUser) {
+      return this.auth.currentUser.email;
+    }else {
+      return null;
+    }
+  }
 }

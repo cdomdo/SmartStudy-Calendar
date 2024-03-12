@@ -1,0 +1,403 @@
+:host {
+  display: contents;
+}
+
+.profile-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(135deg, #E8EDDF, #CFDBD5);
+}
+.profile-container01 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-threeunits);
+  justify-content: space-between;
+}
+.profile-container02 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding: var(--dl-space-space-twounits);
+  max-width: var(--dl-size-size-maxwidth);
+  align-self: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.profile-text03 {
+  font-size: 40px;
+  align-self: center;
+  margin-left: var(--dl-space-space-sixunits);
+  margin-right: var(--dl-space-space-sixunits);
+}
+.profile-container03 {
+  width: auto;
+  height: auto;
+  display: flex;
+  padding: var(--dl-space-space-twounits);
+  max-width: var(--dl-size-size-maxwidth);
+  align-self: center;
+  align-items: center;
+  border-color: var(--dl-color-gray-black);
+  border-style: solid;
+  border-width: 2px;
+  margin-bottom: 64px;
+  justify-content: center;
+}
+.profile-container04 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-self: stretch;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.profile-container05 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}
+.profile-image2 {
+  width: 200px;
+  align-self: center;
+  object-fit: cover;
+  border-radius: var(--dl-radius-radius-round);
+}
+.profile-container06 {
+  gap: var(--dl-space-space-twounits);
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-self: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.profile-text04 {
+  font-size: 34px;
+  align-self: center;
+  text-align: center;
+}
+.profile-text05 {
+  width: auto;
+  height: auto;
+  font-size: 30px;
+  align-self: center;
+  text-align: center;
+}
+.profile-container07 {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-self: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.profile-container08 {
+  flex: initial;
+  width: auto;
+  height: auto;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  align-self: center;
+  align-items: flex-start;
+  margin-bottom: var(--dl-space-space-twounits);
+  justify-content: center;
+}
+.profile-text08 {
+  font-size: 29px;
+  align-self: center;
+  border-radius: 4px;
+}
+.profile-text09 {
+  font-size: 29px;
+  align-self: center;
+  margin-left: var(--dl-space-space-threeunits);
+  border-radius: 4px;
+}
+.profile-text10 {
+  font-size: 29px;
+  align-self: center;
+  margin-left: var(--dl-space-space-threeunits);
+  border-radius: 4px;
+}
+.profile-container09 {
+  flex: initial;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  padding-top: var(--dl-space-space-halfunit);
+  padding-left: var(--dl-space-space-twounits);
+  padding-right: var(--dl-space-space-halfunit);
+  padding-bottom: var(--dl-space-space-halfunit);
+  justify-content: flex-start;
+}
+.profile-text13 {
+  font-size: 25px;
+  align-self: center;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: var(--dl-space-space-twounits);
+}
+.profile-container10 {
+  width: auto;
+  height: auto;
+  display: flex;
+  padding: var(--dl-space-space-halfunit);
+  max-width: var(--dl-size-size-maxwidth);
+  align-self: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.profile-container11 {
+  flex: initial;
+  width: auto;
+  height: auto;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  max-width: var(--dl-size-size-maxwidth);
+  align-self: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.profile-text14 {
+  align-self: center;
+}
+.profile-text17 {
+  align-self: center;
+  margin-left: var(--dl-space-space-unit);
+}
+.profile-text18 {
+  font-size: 16px;
+  align-self: center;
+  margin-left: var(--dl-space-space-twounits);
+}
+.profile-text21 {
+  align-self: center;
+  margin-left: var(--dl-space-space-unit);
+}
+.profile-container12 {
+  flex: initial;
+  width: auto;
+  height: auto;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  max-width: var(--dl-size-size-maxwidth);
+  align-self: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.profile-text22 {
+  align-self: center;
+}
+.profile-text25 {
+  align-self: center;
+  text-align: left;
+  margin-left: var(--dl-space-space-unit);
+}
+@media(max-width: 991px) {
+  .profile-container04 {
+    height: auto;
+    align-self: stretch;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  .profile-container05 {
+    display: none;
+  }
+  .profile-container07 {
+    height: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .profile-container08 {
+    align-items: center;
+    margin-bottom: var(--dl-space-space-threeunits);
+    justify-content: center;
+  }
+  .profile-container09 {
+    align-self: flex-start;
+    align-items: center;
+    margin-bottom: var(--dl-space-space-threeunits);
+    justify-content: flex-start;
+  }
+  .profile-container10 {
+    align-items: flex-start;
+    margin-bottom: var(--dl-space-space-threeunits);
+    justify-content: flex-start;
+  }
+  .profile-container11 {
+    gap: 0;
+    width: 100%;
+    height: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .profile-text18 {
+    margin-left: var(--dl-space-space-twounits);
+  }
+  .profile-container12 {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+@media(max-width: 767px) {
+  .profile-header {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .profile-nav {
+    display: none;
+  }
+  .profile-btn-group {
+    display: none;
+  }
+  .profile-burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .profile-container04 {
+    height: auto;
+    align-self: stretch;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  .profile-text09 {
+    margin-left: var(--dl-space-space-twounits);
+  }
+  .profile-text10 {
+    margin-left: var(--dl-space-space-twounits);
+  }
+  .profile-container11 {
+    align-items: center;
+    justify-content: space-between;
+  }
+  .profile-text18 {
+    margin-left: var(--dl-space-space-twounits);
+  }
+  .profile-text28 {
+    text-align: center;
+    margin-left: var(--dl-space-space-unit);
+    margin-right: var(--dl-space-space-unit);
+  }
+}
+/* Profile List Item */
+.profile-item {
+  flex: initial;
+  width: auto;
+  height: auto;
+  display: flex;
+  padding: var(--dl-space-space-halfunit);
+  align-items: center;
+  margin-bottom: var(--dl-space-space-twounits);
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+/* Profile Label */
+.profile-label {
+  font-size: 16px;
+  align-self: center;
+  margin-right: var(--dl-space-space-twounits);
+}
+
+/* Profile Value */
+.profile-value {
+  font-size: 16px;
+  align-self: center;
+  text-align: left;
+  margin-left: var(--dl-space-space-unit);
+}
+/* Profile Text */
+.profile-text03,
+.profile-text04,
+.profile-text05,
+.profile-text08,
+.profile-text09,
+.profile-text10,
+.profile-text13,
+.profile-text14,
+.profile-text17,
+.profile-text18,
+.profile-text21,
+.profile-text22,
+.profile-text25,
+.profile-text28 {
+  color: var(--text-color);
+}
+/* Button */
+.profile-login,.profile-text08,
+.profile-text09,.profile-text10{
+  background-color: var(--accent-color);
+}
+.profile-logout-button {
+  font-size: 2vh;
+  background-color: var(--dl-color-danger-500);
+  color: var(--text-color);
+  border-radius: 4px;
+}
+
+/* Selected Button Style */
+.profile-text08.selected,
+.profile-text09.selected,
+.profile-text10.selected {
+  background-color: var(--accent-color);
+  color: var(--dl-color-gray-white);
+}
+
+/* Icons */
+.profile-icon {
+  fill: var(--text-color);
+}
+
+@media(max-width: 479px) {
+  .profile-container04 {
+    height: auto;
+    align-self: stretch;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  .profile-container05 {
+    display: none;
+  }
+  .profile-image2 {
+    display: none;
+  }
+  .profile-container07 {
+    align-self: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .profile-footer {
+    padding: var(--dl-space-space-unit);
+    flex-direction: column;
+  }
+  .profile-image3 {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+  .profile-text28 {
+    margin-bottom: var(--dl-space-space-unit);
+  }
+}

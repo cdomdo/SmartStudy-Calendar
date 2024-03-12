@@ -21,6 +21,7 @@ import { ProfessorManagerComponent } from './components/professor-manager/profes
 import { SubjectCreatorComponent } from './components/subject-creator/subject-creator.component';
 import { LoginregisterComponent } from './components/loginregister/loginregister.component';
 import {AngularFireModule} from "@angular/fire/compat";
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -38,7 +39,8 @@ import {AngularFireModule} from "@angular/fire/compat";
     ProfessorManagerComponent,
     SubjectEditorComponent,
     SubjectCreatorComponent,
-    LoginregisterComponent
+    LoginregisterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
