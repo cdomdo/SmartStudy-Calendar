@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import { EventViewerComponent } from './components/event-viewer/event-viewer.component';
 import {getAuth, provideAuth} from "@angular/fire/auth";
 import { EventCreatorComponent } from './components/event-creator/event-creator.component';
@@ -22,6 +23,7 @@ import { SubjectCreatorComponent } from './components/subject-creator/subject-cr
 import { LoginregisterComponent } from './components/loginregister/loginregister.component';
 import {AngularFireModule} from "@angular/fire/compat";
 import { ProfileComponent } from './components/profile/profile.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 
@@ -52,9 +54,12 @@ import { ProfileComponent } from './components/profile/profile.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    AngularFireAuthModule,
     CommonModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

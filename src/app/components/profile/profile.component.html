@@ -1,46 +1,52 @@
 <div class="profile-container">
-  <div class="profile-container02"><h1 class="profile-text03">Perfil</h1></div>
-  <div class="profile-container03">
-    <div class="profile-container04">
-      <div class="profile-container05">
-        <img
-          src="https://play.teleporthq.io/static/svg/default-img.svg"
-          alt="image"
-          class="profile-image2"
-        />
-      </div>
-      <div class="profile-container06">
-        <span class="profile-text04">John Doe</span>
-        <span class="profile-text05">
-          <span>Estudiante</span>
-          <br />
-        </span>
-        <button class="profile-logout-button" (click)="Logout()">Logout</button>
-      </div>
+  <div class="profile-container01">
+    <div class="profile-image-container">
+      <img
+        alt="image"
+        src="https://via.placeholder.com/250"
+        class="profile-image"
+      />
+      <button type="button" class="logout-button">Logout</button>
     </div>
-    <div class="profile-container07">
-      <div class="profile-container08">
-        <button class="profile-text08" [class.selected]="selectedButton === 'Perfil'" (click)="toggleListVisibility('Perfil')">Perfil</button>
-        <button class="profile-text09" [class.selected]="selectedButton === 'Notas'" (click)="toggleListVisibility('Notas')">Notas</button>
-        <button class="profile-text10" [class.selected]="selectedButton === 'Progreso'" (click)="toggleListVisibility('Progreso')">Progreso</button>
-      </div>
-      <div class="profile-container09" *ngIf="selectedButton === 'Perfil'">
-        <h2 class="profile-text13">Detalles de Usuario</h2>
-      </div>
-      <div class="profile-container10">
-        <div class="profile-container11">
-          <ul class="profile-list" *ngIf="isListVisible && selectedButton === 'Perfil'">
+    <div class="profile-container02">
+      <div class="profile-container03">
+        <div class="profile-container04">
+          <div class="profile-container05">
+            <span class="profile-text">{{ userData?.nombreCompleto }}</span>
+            <span class="profile-text01">
+              <span>Estudiante</span>
+              <br />
+            </span>
+          </div>
+        </div>
+        <div class="profile-container06">
+          <button type="button" class="button">Perfil</button>
+          <button type="button" class="button">Dashboard</button>
+          <button type="button" class="button">Notas</button>
+        </div>
+        <div class="profile-container07">
+          <div class="profile-container08">
+            <span class="profile-text04">
+              <span>Detalles del Usuario</span>
+              <br />
+            </span>
+          </div>
+          <ul class="profile-list">
             <li class="profile-item">
               <span class="profile-label">Telefono:</span>
-              <span class="profile-value">123-456-789</span>
+              <span class="profile-value">{{ userData?.telefono }}</span>
             </li>
             <li class="profile-item">
               <span class="profile-label">Universidad:</span>
-              <span class="profile-value">Universidad de las Palmas de Gran Canaria</span>
+              <span class="profile-value">{{ userData?.universidad }}</span>
             </li>
             <li class="profile-item">
               <span class="profile-label">Email:</span>
-              <span class="profile-value">{{ userEmail }}</span>
+              <span class="profile-value">{{ userData?.email }}</span>
+            </li>
+            <li class="profile-item">
+              <span class="profile-label">Fecha de Nacimiento:</span>
+              <span class="profile-value">{{ userData?.fechaNacimiento }}</span>
             </li>
           </ul>
         </div>

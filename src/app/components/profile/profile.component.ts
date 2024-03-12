@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
+import {User} from "../../interfaces/user.interface";
 
 @Component({
   selector: 'app-profile',
@@ -7,6 +8,7 @@ import {UserService} from "../../services/user.service";
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit {
+  userData: User | null = null;
   selectedButton: string = 'Perfil';
   isListVisible: boolean = true;
 
@@ -15,7 +17,12 @@ export class ProfileComponent implements OnInit {
 
   userEmail: string | null | undefined;
   ngOnInit(): void {
-    this.userEmail = this.userService.getUserEmail();
+    // @ts-ignore
+    this.userService.getUserData().subscribe(userData => {
+      if (userData) {
+        this.userData = userData; // Asegúrate de que userData sea de tipo User
+      }
+    });
   }
   toggleListVisibility(button: string) {
     this.selectedButton = button;

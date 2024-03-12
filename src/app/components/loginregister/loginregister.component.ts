@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import {User} from "../../interfaces/user.interface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-loginregister',
@@ -7,7 +9,18 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./loginregister.component.css']
 })
 export class LoginregisterComponent {
-  constructor(private userService: UserService) {}
+
+  userData: User = {
+    nombreCompleto: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    telefono: '',
+    universidad: '',
+    fechaNacimiento: new Date()
+  };
+
+  constructor(private router: Router,private userService: UserService) {}
 
   ngOnInit(): void {
     const container = document.getElementById('container');
@@ -28,11 +41,13 @@ export class LoginregisterComponent {
   }
 
   registerUser(formData: any) {
-    const { email, password } = formData;
-    this.userService.register({ email, password }).then(() => {
-      console.log("Registration successful")
+    this.userData = formData;
+    this.userService.register(this.userData).then(() => {
+      console.log("Registro exitoso");
+      // Aquí podrías redirigir al usuario a otra página, mostrar un mensaje de éxito, etc.
     }).catch(error => {
       console.error('Error al registrar:', error);
+      // Aquí podrías mostrar un mensaje de error al usuario, por ejemplo.
     });
   }
 
@@ -40,6 +55,7 @@ export class LoginregisterComponent {
     const { email, password } = formData;
     this.userService.login({ email, password }).then(() => {
       console.log("Login successful")
+      this.router.navigate(['/profile']);
     }).catch(error => {
       console.error('Error al iniciar sesión:', error);
     });

@@ -4,13 +4,17 @@
     <div class="form-container sign-up">
       <form (ngSubmit)="registerUser(registerForm.value)" #registerForm="ngForm">
         <h1>Crear Cuenta</h1>
-        <div class="social-icons">
-          <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-        </div>
-        <span>O utiliza tu email para registrarte.</span>
-        <input type="text" placeholder="Nombre" ngModel name="nombre">
-        <input type="email" placeholder="Email" ngModel name="email">
-        <input type="password" placeholder="Contraseña" ngModel name="password">
+        <input type="text" placeholder="Nombre Completo" [(ngModel)]="userData.nombreCompleto" name="nombreCompleto">
+        <input type="email" placeholder="Email" [(ngModel)]="userData.email" name="email">
+        <input type="password" placeholder="Contraseña" [(ngModel)]="userData.password" name="password">
+        <input type="password" placeholder="Confirmar Contraseña" [(ngModel)]="userData.confirmPassword" name="confirmPassword">
+        <select [(ngModel)]="userData.universidad" name="universidad">
+          <option value="" disabled selected>Selecciona una universidad</option>
+          <option value="ULPGC">ULPGC</option>
+          <option value="ULL">ULL</option>
+        </select>
+        <input type="tel" placeholder="Teléfono" [(ngModel)]="userData.telefono" name="telefono">
+        <input type="date" placeholder="Fecha de Nacimiento" [(ngModel)]="userData.fechaNacimiento" name="fechaNacimiento">
         <button type="submit">Regístrate</button>
       </form>
     </div>
@@ -43,3 +47,4 @@
     </div>
   </div>
 </body>
+
