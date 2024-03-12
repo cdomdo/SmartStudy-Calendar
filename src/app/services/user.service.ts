@@ -32,6 +32,7 @@ export class UserService {
       .then(userCredential => {
         // Guardar información adicional en Firestore
         return this.firestore.collection('users').doc(userCredential.user.uid).set({
+          uid: userCredential.user.uid,
           email,
           nombreCompleto,
           telefono,
