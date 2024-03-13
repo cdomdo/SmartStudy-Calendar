@@ -1,0 +1,56 @@
+<div class="profile-container">
+  <div class="profile-container01">
+    <div class="profile-image-container">
+      <img
+        alt="image"
+        src="https://via.placeholder.com/250"
+        class="profile-image"
+      />
+      <button type="button" class="logout-button">Logout</button>
+    </div>
+    <div class="profile-container02">
+      <div class="profile-container03">
+        <div class="profile-container04">
+          <div class="profile-container05">
+            <span class="profile-text">{{ userData?.nombreCompleto }}</span>
+            <span class="profile-text01">
+              <span>Estudiante</span>
+              <br />
+            </span>
+          </div>
+        </div>
+        <div class="profile-container06">
+          <button type="button" class="button">Perfil</button>
+          <button type="button" class="button">Progreso</button>
+          <button type="button" class="button">Notas</button>
+        </div>
+        <div class="profile-container07">
+          <div class="profile-container08">
+            <span class="profile-text04">
+              <span>Detalles del Usuario</span>
+              <br />
+            </span>
+          </div>
+          <ul class="profile-list">
+            <li class="profile-item">
+              <span class="profile-label">Telefono:</span>
+              <span class="profile-value">{{ userData?.telefono }}</span>
+            </li>
+            <li class="profile-item">
+              <span class="profile-label">Universidad:</span>
+              <span class="profile-value">{{ userData?.universidad }}</span>
+            </li>
+            <li class="profile-item">
+              <span class="profile-label">Email:</span>
+              <span class="profile-value">{{ userData?.email }}</span>
+            </li>
+            <li class="profile-item">
+              <span class="profile-label">Fecha de Nacimiento:</span>
+              <span class="profile-value">{{ userData?.fechaNacimiento }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
