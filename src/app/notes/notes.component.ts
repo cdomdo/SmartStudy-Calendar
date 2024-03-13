@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
-import {CdkDragDrop, CdkDropList, moveItemInArray} from '@angular/cdk/drag-drop';
-import {NoteCardComponent} from "../note-card/note-card.component";
-import {NoteHeaderComponent} from "../note-header/note-header.component";
-import {NgForOf} from "@angular/common";
-import { DragDropModule } from '@angular/cdk/drag-drop';
-
+import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { NoteCardComponent } from "../note-card/note-card.component";
+import { NoteHeaderComponent } from "../note-header/note-header.component";
+import {AsyncPipe, NgForOf} from "@angular/common";
+import { DragDropModule } from '@angular/cdk/drag-drop'; // Importa DragDropModule correctamente
+import { Observable } from "rxjs";
+import { NoteService } from "../services/note.service";
+import  Note  from "../interfaces/note.interface"; // Asegúrate de que la ruta de importación es correcta
 
 @Component({
   selector: 'app-notes',
@@ -12,23 +14,30 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   imports: [
     NoteCardComponent,
     NoteHeaderComponent,
-    CdkDropList,
-    NgForOf
+    DragDropModule, // Usa DragDropModule aquí
+    NgForOf,
+    AsyncPipe
   ],
   templateUrl: './notes.component.html',
-  styleUrl: './notes.component.css'
+  styleUrls: ['./notes.component.css']
 })
-export class NotesComponent {
-  notes = [
-    { title: 'Dato inecesario 1', subtitle: 'El café es una de las bebidas más populares...' },
-    { title: 'Dato inecesario 2', subtitle: 'El café es una de las bebidas más populares...' },
-    { title: 'Dato inecesario 3', subtitle: 'El café es una de las bebidas más populares...' },
-    { title: 'Dato inecesario 4', subtitle: 'El café es una de las bebidas más populares...' },
-    { title: 'Dato inecesario 5', subtitle: 'El café es una de las bebidas más populares...' }
-  ];
+export class NotesComponent implements OnInit {
+  notes$!: Observable<Note[]>;
 
-  drop(event: CdkDragDrop<{title: string, subtitle: string}[]>): void {
-    moveItemInArray(this.notes, event.previousIndex, event.currentIndex);
+  constructor(private noteService: NoteService) {}
+
+  ngOnInit() {
+    this.loadNotes();
   }
 
+  loadNotes() {
+    this.notes$ = this.noteService.getNotes();
+  }
+
+  drop(event: CdkDragDrop<Note[]>): void {
+    this.notes$.subscribe(notes => {
+      moveItemInArray(notes, event.previousIndex, event.currentIndex);
+      // Reordena las notas localmente, no en Firestore
+    });
+  }
 }

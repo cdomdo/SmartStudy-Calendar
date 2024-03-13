@@ -1,5 +1,4 @@
 <app-note-header></app-note-header>
 <div class="card-container" cdkDropList (cdkDropListDropped)="drop($event)">
-  <app-note-card *ngFor="let note of notes; let i = index" [title]="note.title" [subtitle]="note.subtitle" cdkDrag></app-note-card>
+  <app-note-card *ngFor="let note of notes$ | async; let i = index" [title]="note.title" [subtitle]="note.content" cdkDrag></app-note-card>
 </div>
-
