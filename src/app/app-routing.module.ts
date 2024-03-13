@@ -7,10 +7,10 @@ import {CalendarComponent} from "./components/calendar/calendar.component";
 import {HomeComponent} from "./components/website/home/home.component";
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, pathMatch: 'full'},
+  {path: '', component: LoginregisterComponent, pathMatch: 'full'},
   {path: 'calendar', component: CalendarComponent},
-  {path: 'loginregister', component: LoginregisterComponent },
-  {path: 'profile', component: ProfileComponent }
+  {path: 'profile', component: ProfileComponent},
+  {path: 'home', component: HomeComponent}
 ];
 
 @NgModule({

@@ -7,21 +7,29 @@ import {
   docData,
   deleteDoc,
   updateDoc,
-  addDoc
+  addDoc, DocumentReference
 } from '@angular/fire/firestore';
-import { Observable, combineLatest, of } from 'rxjs';
+import { Auth } from '@angular/fire/auth';
+import {combineLatest, Observable, of} from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import  Event  from '../interfaces/event.interface';
-import  Course  from '../interfaces/course.interface';
+import Event from '../interfaces/event.interface';
+import Course from '../interfaces/course.interface';
+import firebase from "firebase/compat";
+import DocumentData = firebase.firestore.DocumentData;
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private auth: Auth) {}
+
+  private getUserId(): string {
+    return this.auth.currentUser?.uid ?? '';
+  }
 
   getEventsWithCourse(): Observable<(Event & { course?: Course })[]> {
-    const eventsRef = collection(this.firestore, 'events');
+    const userId = this.getUserId();
+    const eventsRef = collection(this.firestore, `users/${userId}/events`);
     return (collectionData(eventsRef, { idField: 'id' }) as Observable<Event[]>).pipe(
       switchMap((events: Event[]) => {
         if (events.length === 0) {
@@ -31,7 +39,7 @@ export class EventsService {
           if (!event.courseRef) {
             return of({...event});
           }
-          return docData(event.courseRef).pipe(
+          return docData(event.courseRef, { idField: 'id' }).pipe(
             map((course: any) => {
               const courseData: Course = course as Course;
               return {
@@ -46,23 +54,21 @@ export class EventsService {
     );
   }
 
+  addEvent(eventData: Event): Promise<DocumentReference<DocumentData, DocumentData>> {
+    const userId = this.getUserId();
+    const eventsRef = collection(this.firestore, `users/${userId}/events`);
+    return addDoc(eventsRef, eventData);
+  }
+
   modifyEvent(eventId: string, eventData: Partial<Event>): Promise<void> {
-    const eventRef = doc(this.firestore, 'events', eventId);
+    const userId = this.getUserId();
+    const eventRef = doc(this.firestore, `users/${userId}/events`, eventId);
     return updateDoc(eventRef, eventData);
   }
 
-  addEvent(eventData: Event): Promise<void> {
-    const eventsRef = collection(this.firestore, 'events');
-    return addDoc(eventsRef, eventData).then(docRef => {
-      const eventDocRef = doc(this.firestore, 'events', docRef.id);
-      return updateDoc(eventDocRef, { id: docRef.id });
-    }).catch(error => {
-      throw new Error("Error al crear el evento");
-    });
-  }
-
   deleteEvent(eventId: string): Promise<void> {
-    const eventRef = doc(this.firestore, 'events', eventId);
+    const userId = this.getUserId();
+    const eventRef = doc(this.firestore, `users/${userId}/events`, eventId);
     return deleteDoc(eventRef);
   }
 }

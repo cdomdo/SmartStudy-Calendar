@@ -1,5 +1,3 @@
-<app-calendar></app-calendar>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <body>
   <div class="container" id="container">
@@ -11,9 +9,9 @@
         <input type="password" placeholder="Contraseña" [(ngModel)]="userData.password" name="password">
         <input type="password" placeholder="Confirmar Contraseña" [(ngModel)]="userData.confirmPassword" name="confirmPassword">
         <select [(ngModel)]="userData.universidad" name="universidad">
-          <option value="" disabled selected>Selecciona una universidad</option>
-          <option value="ULPGC">ULPGC</option>
-          <option value="ULL">ULL</option>
+          <option value="" disabled selected>Selecciona una centro universitario</option>
+          <option value="ULPGC">Universidad de Las Palmas de Gran Canaria</option>
+          <option value="ULL">Universidad de La Laguna</option>
         </select>
         <input type="tel" placeholder="Teléfono" [(ngModel)]="userData.telefono" name="telefono">
         <input type="date" placeholder="Fecha de Nacimiento" [(ngModel)]="userData.fechaNacimiento" name="fechaNacimiento">
@@ -37,12 +35,12 @@
       <div class="toggle">
         <div class="toggle-panel toggle-left">
           <h1>¡Bienvenido de vuelta!</h1>
-          <p>Introduce tus datos para acceder a las funcionalidades de la página web.</p>
+          <p>Introduce tus credenciales para acceder a tu cuenta de SmartStudy Calendar.</p>
           <button class="hidden" id="login">Acceder</button>
         </div>
         <div class="toggle-panel toggle-right">
-          <h1>¡Hola, Amigo!</h1>
-          <p>Regístrate con tus datos personales para acceder a las funcionalidades de la página web.</p>
+          <h1>¿No tienes cuenta?</h1>
+          <p>Regístrate con tus datos personales para empezar a utilizar SmartStudy Calendar.</p>
           <button class="hidden" id="register">Regístrate</button>
         </div>
       </div>

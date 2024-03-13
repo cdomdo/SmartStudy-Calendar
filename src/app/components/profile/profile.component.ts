@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {User} from "../../interfaces/user.interface";
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-profile',
@@ -12,8 +14,7 @@ export class ProfileComponent implements OnInit {
   selectedButton: string = 'Perfil';
   isListVisible: boolean = true;
 
-  constructor(private userService: UserService) { }
-
+  constructor(private router: Router,private userService: UserService) {}
 
   userEmail: string | null | undefined;
   ngOnInit(): void {
@@ -31,5 +32,6 @@ export class ProfileComponent implements OnInit {
 
   Logout() {
     this.userService.logout();
+    this.router.navigate(['/home']);
   }
 }
