@@ -1,0 +1,24 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<div class="header">
+  <div class="menu">
+    <a (click)="navigateTo('/calendar')" class="menu-item" cursor="pointer">
+      <i class="far fa-calendar"></i>
+      <span>Calendario</span>
+    </a>
+    <a (click)="navigateTo('/notes')" class="menu-item" cursor="pointer">
+      <i class="far fa-sticky-note"></i>
+      <span>Notas</span>
+    </a>
+  </div>
+  <div class="user-menu">
+    <a (click)="navigateTo('/profile')" class="user-item" cursor="pointer">
+      <i class="far fa-user"></i>
+    </a>
+    <a (click)="logout()" class="logout-item" cursor="pointer">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+    </a>
+  </div>
+</div>

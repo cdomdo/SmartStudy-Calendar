@@ -26,6 +26,8 @@ import {AngularFireModule} from "@angular/fire/compat";
 import { ProfileComponent } from './components/profile/profile.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HomeComponent } from './components/website/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { HomeComponent } from './components/website/home/home.component';
     LoginregisterComponent,
     ProfileComponent,
     EventListViewerComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

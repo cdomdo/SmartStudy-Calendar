@@ -5,12 +5,14 @@ import { LoginregisterComponent } from './components/loginregister/loginregister
 import { ProfileComponent} from "./components/profile/profile.component";
 import {CalendarComponent} from "./components/calendar/calendar.component";
 import {HomeComponent} from "./components/website/home/home.component";
+import {LogoutComponent} from "./components/logout/logout.component";
 
 const routes: Routes = [
   {path: '', component: LoginregisterComponent, pathMatch: 'full'},
   {path: 'calendar', component: CalendarComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'logout', component: LogoutComponent}
 ];
 
 @NgModule({

@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
     // @ts-ignore
     this.userService.getUserData().subscribe(userData => {
       if (userData) {
-        this.userData = userData; // Asegúrate de que userData sea de tipo User
+        this.userData = userData;
       }
     });
   }
