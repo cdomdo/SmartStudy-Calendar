@@ -1,45 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-
-interface Professor {
-  id: string;
-  name: string;
-  email: string;
-}
-
-interface DocumentReference<T> {
-  id: string;
-}
-
-interface Course {
-  id: string;
-  name: string;
-  professorsRefs: DocumentReference<Professor>[];
-  description: string;
-}
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { trigger, style, animate, transition } from '@angular/animations';
+import Professor from "../../interfaces/professor.interface";
+import Course from "../../interfaces/course.interface";
+import { DocumentReference } from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-subject-viewer',
   templateUrl: './subject-viewer.component.html',
-  styleUrls: ['./subject-viewer.component.css']
+  styleUrls: ['./subject-viewer.component.css'],
+  animations: [
+    trigger('dialog', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.9)' }),
+        animate('200ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+      transition(':leave', [
+        animate('200ms ease-in', style({ opacity: 0, transform: 'scale(0.9)' }))
+      ])
+    ])
+  ]
 })
 export class SubjectViewerComponent implements OnInit {
-  selectedCourse?: Course;
-  professors: Professor[] = [
-    { id: 'prof1', name: 'Profesor Uno', email: 'prof1@example.com' },
-    { id: 'prof2', name: 'Profesor Dos', email: 'prof2@example.com' },
-    { id: 'prof3', name: 'Profesor Tres', email: 'prof3@example.com' }
-  ];
+  @Input() selectedCourse?: Course;
+  @Output() close = new EventEmitter<void>();
 
-  constructor() {}
+  professors: Professor[] = [];
 
-  ngOnInit(): void {
-    this.selectedCourse = {
-      id: '1',
-      name: 'Curso 1',
-      description: 'Descripción del Curso 1',
-      professorsRefs: [{id: 'prof1'}, {id: 'prof2'}]
-    };
-  }
+  ngOnInit(): void {}
 
   getProfessorName(profRef: DocumentReference<Professor>): string {
     const professor = this.professors.find(prof => prof.id === profRef.id);
@@ -52,5 +39,6 @@ export class SubjectViewerComponent implements OnInit {
   }
 
   closeDialog() {
+    this.close.emit();
   }
 }

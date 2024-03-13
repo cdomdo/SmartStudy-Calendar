@@ -6,10 +6,11 @@ import {
   collectionData,
   collection,
   deleteDoc,
-  doc, updateDoc
+  doc, updateDoc, addDoc, query, where, getDocs
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import {from, Observable, of} from 'rxjs';
 import  Course  from '../interfaces/course.interface';
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,15 @@ export class CourseService {
     return collectionData(coursesCollectionRef, { idField: 'id' }) as Observable<Course[]>;
   }
 
+
+  async addCourse(newCourse: Course): Promise<void> {
+    const coursesCollectionRef = collection(this.firestore, 'courses');
+    const docRef = await addDoc(coursesCollectionRef, newCourse);
+    const courseDocRef = doc(this.firestore, 'courses', docRef.id);
+    await updateDoc(courseDocRef, { id: docRef.id }).catch(error => {
+      throw new Error("Error al actualizar el ID del curso");
+    });
+  }
   deleteCourse(courseId: string): Promise<void> {
     const courseDocRef = doc(this.firestore, 'courses', courseId);
     return deleteDoc(courseDocRef);
@@ -37,8 +47,18 @@ export class CourseService {
     return updateDoc(courseDocRef, {
       name: updatedCourseData.name,
       description: updatedCourseData.description,
-      // Asegúrate de actualizar aquí todos los campos relevantes de Course
-      // Si manejas referencias a profesores, necesitarás una lógica adicional para manejar eso
     });
   }
+  findCourseByName(name: string): Observable<Course[]> {
+    const coursesCollectionRef = collection(this.firestore, 'courses');
+    const q = query(coursesCollectionRef, where("name", "==", name.trim()));
+    return from(getDocs(q)).pipe(
+      map(querySnapshot => querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as Course))
+    );
+  }
+
+  createRefToCourse(courseId: string): DocumentReference<Course> {
+    return doc(this.firestore, `courses/${courseId}`) as DocumentReference<Course>;
+  }
+
 }

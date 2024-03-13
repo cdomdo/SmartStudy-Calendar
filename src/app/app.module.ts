@@ -20,11 +20,12 @@ import { SubjectEditorComponent } from './components/subject-editor/subject-edit
 import { ProfessorCreatorComponent } from './components/professor-creator/professor-creator.component';
 import { ProfessorManagerComponent } from './components/professor-manager/professor-manager.component';
 import { SubjectCreatorComponent } from './components/subject-creator/subject-creator.component';
+import { EventListViewerComponent } from './components/event-list-viewer/event-list-viewer.component';
 import { LoginregisterComponent } from './components/loginregister/loginregister.component';
 import {AngularFireModule} from "@angular/fire/compat";
 import { ProfileComponent } from './components/profile/profile.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
+import { HomeComponent } from './components/website/home/home.component';
 
 
 @NgModule({
@@ -42,7 +43,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     SubjectEditorComponent,
     SubjectCreatorComponent,
     LoginregisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    EventListViewerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
