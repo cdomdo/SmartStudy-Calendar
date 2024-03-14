@@ -111,3 +111,23 @@ function updateNote(noteId, title, desc) {
     addBtn.innerText = "Update Note";
     popupTitle.innerText = "Update a Note";
 }
+
+
+document.querySelector('#search-input').addEventListener('input',filterList);
+
+function filterList(){
+    const searchInput = document.querySelector('#search-input');
+    const filter = searchInput.value.toLowerCase();
+    const listItems = document.querySelectorAll('.note');
+    listItems.forEach((item)=>{
+        let text = item.textContent;
+        if(text.toLowerCase().includes(filter.toLowerCase())){
+            item.style.display='';
+        }
+        else{
+            item.style.display = 'none';
+        }
+    });
+}
+
+
