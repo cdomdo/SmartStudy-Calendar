@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadatos para definir la codificación, compatibilidad y escala -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la página -->
+    <title>InstaNote</title>
+    <!-- Enlace al archivo CSS local -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Enlace a una hoja de estilos externa de Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release-pro/v4.0.0/css/line.css">
+</head>
+<body>
+    <!-- Contenedor de la caja emergente para agregar una nueva nota -->
+    <div class="popup-box">
+        <!-- Caja emergente para agregar una nueva nota -->
+        <div class="popup show">
+            <!-- Contenido de la caja emergente -->
+            <div class="content">
+                <!-- Encabezado de la caja emergente -->
+                <header>
+                    <!-- Título de la caja emergente -->
+                    <p>Add a new note</p>
+                    <!-- Icono para cerrar la caja emergente -->
+                    <i class="uil uil-times"></i>
+                </header>
+                <!-- Formulario para agregar una nueva nota -->
+                <form action="#">
+                    <!-- Campo para el título de la nota -->
+                    <div class="row tile">
+                        <label>Title</label>
+                        <input type="text" id="input">
+                    </div>
+                    <!-- Campo para la descripción de la nota -->
+                    <div class="row description">
+                        <label for="">Description</label>
+                        <textarea name="" id=""></textarea>
+                    </div>
+                    <!-- Botón para agregar la nota -->
+                    <button class="add-note">Add Note</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Contenedor principal -->
+    <div class="wrapper">
+        <!-- Elemento de lista para agregar una nueva nota -->
+        <li class="add-box">
+            <!-- Icono para agregar una nueva nota -->
+            <div class="icon"><i class="uil uil-plus"></i></div>
+            <!-- Texto para agregar una nueva nota -->
+            <p>Add new note</p>
+        </li>
+    </div>
+    <!-- Enlace al archivo JavaScript -->
+    <script src="index.js"></script>
+</body>
+</html>
