@@ -1,0 +1,26 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+<body>
+<div class="dashboard">
+  <aside class="sidebar">
+    <div class="profile-info">
+      <i class="fas fa-user-circle profile-icon"></i>
+      <h4>{{ userData?.nombreCompleto }}</h4>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link" (click)="navigateTo('/profile');"><i class="fas fa-cog"></i> Configuración de cuenta</a>
+      <a href="#" class="sidebar-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+    </nav>
+  </aside>
+  <div class="content">
+    <header class="cabecera">
+    </header>
+    <div class="main-content">
+      <div class="grid-item" (click)="navigateTo('/calendar')"><i class="fas fa-calendar-alt"></i> Calendario</div>
+      <div class="grid-item" (click)="navigateTo('/notes')"><i class="fas fa-clipboard-list"></i> Notas</div>
+    </div>
+  </div>
+</div>
+<script src="animations.js"></script>
+</body>
