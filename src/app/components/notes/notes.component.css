@@ -1,101 +1,66 @@
-/* Estilos Generales */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 50px;
-  min-height: 100vh;
-}
-
 .notes-container {
-  width: 80%;
   max-width: 960px;
+  margin: 20px auto;
 }
 
-.add-note-form {
-  margin-bottom: 2rem;
-}
-
-.add-note-form input[type="text"] {
-  padding: 10px;
-  margin-right: 10px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.add-note-form button {
-  padding: 10px 20px;
+.toggle-form-button, .form-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: #007bff;
   color: white;
   border: none;
+  padding: 10px 20px;
+  font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-right: 10px;
 }
 
-.add-note-form button:hover {
+.toggle-form-button i, .form-actions button i {
+  margin-right: 5px;
+}
+
+.toggle-form-button:hover, .form-actions button:hover {
   background-color: #0056b3;
 }
 
-.note-item {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
-  padding: 20px;
-  transition: transform 0.2s ease;
-  animation: slideIn 0.5s ease forwards;
+.form-container, .notes-list {
+  margin-top: 20px;
 }
 
-.note-item:hover {
-  transform: scale(1.02);
+.note-item {
+  display: inline-block;
+  width: calc(33.333% - 20px);
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  vertical-align: top;
+}
+
+.note-content h2, .note-content p, .note-actions button {
+  margin: 10px 0;
 }
 
 .note-actions button {
-  background-color: #dc3545;
-  color: white;
+  background-color: transparent;
+  color: #007bff;
   border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
+  padding: 0;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.note-actions button:hover {
-  background-color: #c82333;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Ajustes de responsive */
 @media (max-width: 768px) {
-  .notes-container {
-    width: 90%;
+  .note-item {
+    width: calc(50% - 20px); /* Ajusta para pantallas más pequeñas */
   }
+}
 
-  .add-note-form input[type="text"] {
-    width: calc(100% - 120px);
-  }
-
-  .add-note-form button {
-    width: 100px;
+@media (max-width: 480px) {
+  .note-item {
+    width: 100%; /* Ajusta para pantallas aún más pequeñas */
   }
 }

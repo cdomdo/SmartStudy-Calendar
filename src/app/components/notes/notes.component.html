@@ -1,27 +1,28 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 <div class="notes-container">
-  <div class="add-note-form">
+  <button class="toggle-form-button" (click)="toggleForm()">
+    <i class="fas fa-plus"></i> Añadir Nota
+  </button>
+
+  <div *ngIf="showForm" class="form-container">
     <input type="text" [(ngModel)]="newNote.title" placeholder="Título" />
     <input type="text" [(ngModel)]="newNote.description" placeholder="Descripción" />
-    <button (click)="addNote()">Agregar Nota</button>
+    <div class="form-actions">
+      <button (click)="submitNote()"><i class="fas fa-save"></i> Guardar</button>
+      <button (click)="toggleForm()"><i class="fas fa-times"></i> Cancelar</button>
+    </div>
   </div>
 
   <div class="notes-list">
     <div *ngFor="let note of notes" class="note-item">
-      <div *ngIf="editingNoteId !== note.id">
-        <div class="note-content">
-          <h2>{{ note.title }}</h2>
-          <p>{{ note.description }}</p>
-        </div>
-        <div class="note-actions">
-          <button (click)="startEdit(note)">Editar</button>
-          <button *ngIf="note.id" (click)="deleteNote(note.id!)">Eliminar</button>
-        </div>
+      <div class="note-content">
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.description }}</p>
       </div>
-      <div *ngIf="editingNoteId === note.id">
-        <input type="text" [(ngModel)]="editingNoteTitle" placeholder="Título" />
-        <input type="text" [(ngModel)]="editingNoteDescription" placeholder="Descripción" />
-        <button (click)="saveEdit()">Guardar</button>
-        <button (click)="cancelEdit()">Cancelar</button>
+      <div class="note-actions">
+        <button (click)="toggleForm(note)"><i class="fas fa-edit"></i> Editar</button>
+        <button *ngIf="note.id" (click)="deleteNote(note.id)"><i class="fas fa-trash-alt"></i> Eliminar</button>
       </div>
     </div>
   </div>

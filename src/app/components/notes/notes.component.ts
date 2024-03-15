@@ -10,9 +10,8 @@ import { NotesService } from '../../services/notes.service';
 export class NotesComponent implements OnInit {
   notes: Note[] = [];
   newNote: Note = {title: '', description: ''};
+  showForm: boolean = false;
   editingNoteId: string | undefined = undefined;
-  editingNoteTitle: string = '';
-  editingNoteDescription: string = '';
 
   constructor(private notesService: NotesService) { }
 
@@ -26,39 +25,39 @@ export class NotesComponent implements OnInit {
     });
   }
 
-  addNote(): void {
-    if (this.newNote.title && this.newNote.description) {
-      this.notesService.addNote(this.newNote).then(() => {
-        this.newNote = {title: '', description: ''};
-        this.loadNotes();
-      });
-    }
-  }
-
-  startEdit(note: Note): void {
-    if(note.id) {
+  toggleForm(note?: Note): void {
+    this.showForm = !this.showForm;
+    if (note) {
       this.editingNoteId = note.id;
-      this.editingNoteTitle = note.title;
-      this.editingNoteDescription = note.description;
+      this.newNote = { ...note };
+    } else {
+      this.editingNoteId = undefined;
+      this.newNote = {title: '', description: ''};
     }
   }
 
-  saveEdit(): void {
+  submitNote(): void {
     if (this.editingNoteId) {
-      this.notesService.modifyNote(this.editingNoteId, { title: this.editingNoteTitle, description: this.editingNoteDescription }).then(() => {
-        this.editingNoteId = undefined;
-        this.loadNotes();
+      this.notesService.modifyNote(this.editingNoteId, this.newNote).then(() => {
+        this.resetForm();
+      });
+    } else if (this.newNote.title && this.newNote.description) {
+      this.notesService.addNote(this.newNote).then(() => {
+        this.resetForm();
       });
     }
-  }
-
-  cancelEdit(): void {
-    this.editingNoteId = undefined;
   }
 
   deleteNote(noteId: string): void {
     this.notesService.deleteNote(noteId).then(() => {
       this.loadNotes();
     });
+  }
+
+  resetForm(): void {
+    this.showForm = false;
+    this.newNote = {title: '', description: ''};
+    this.editingNoteId = undefined;
+    this.loadNotes();
   }
 }
