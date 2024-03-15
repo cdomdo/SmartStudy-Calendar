@@ -10,8 +10,11 @@ import { NotesService } from '../../services/notes.service';
 export class NotesComponent implements OnInit {
   notes: Note[] = [];
   newNote: Note = {title: '', description: ''};
+  editingNoteId: string | undefined = undefined;
+  editingNoteTitle: string = '';
+  editingNoteDescription: string = '';
 
-  constructor(private notesService: NotesService) {}
+  constructor(private notesService: NotesService) { }
 
   ngOnInit(): void {
     this.loadNotes();
@@ -26,21 +29,36 @@ export class NotesComponent implements OnInit {
   addNote(): void {
     if (this.newNote.title && this.newNote.description) {
       this.notesService.addNote(this.newNote).then(() => {
-        this.newNote = {title: '', description: ''}; // Reset form
-        this.loadNotes(); // Recargar las notas
+        this.newNote = {title: '', description: ''};
+        this.loadNotes();
       });
     }
   }
 
-  deleteNote(noteId: string): void { // Asegúrate de que el tipo sea string
-    this.notesService.deleteNote(noteId).then(() => {
-      this.loadNotes(); // Recargar las notas después de eliminar
-    });
+  startEdit(note: Note): void {
+    if(note.id) {
+      this.editingNoteId = note.id;
+      this.editingNoteTitle = note.title;
+      this.editingNoteDescription = note.description;
+    }
   }
 
-  editNote(noteId: string, title: string, description: string): void {
-    this.notesService.modifyNote(noteId, { title, description }).then(() => {
-      this.loadNotes(); // Recargar las notas después de editar
+  saveEdit(): void {
+    if (this.editingNoteId) {
+      this.notesService.modifyNote(this.editingNoteId, { title: this.editingNoteTitle, description: this.editingNoteDescription }).then(() => {
+        this.editingNoteId = undefined;
+        this.loadNotes();
+      });
+    }
+  }
+
+  cancelEdit(): void {
+    this.editingNoteId = undefined;
+  }
+
+  deleteNote(noteId: string): void {
+    this.notesService.deleteNote(noteId).then(() => {
+      this.loadNotes();
     });
   }
 }
