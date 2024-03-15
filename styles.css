@@ -225,3 +225,16 @@ form textarea {
     height: 150px;
     resize: none;
 }
+
+.navbar{
+    padding: 10px 50px;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Ajusta este valor para cambiar la curvatura de los bordes */
+    font-size: 16px;
+    outline: none;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    margin:50px;
+}
