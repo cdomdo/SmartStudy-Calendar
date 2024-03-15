@@ -29,7 +29,7 @@ import { HomeComponent } from './components/website/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
+import { NotesComponent } from "./components/notes/notes.component";
 
 @NgModule({
   declarations: [
@@ -51,7 +51,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HomeComponent,
     HeaderComponent,
     LogoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,

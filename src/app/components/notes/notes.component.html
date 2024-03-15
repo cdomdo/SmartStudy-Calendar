@@ -1,0 +1,21 @@
+<!-- notes-component.component.html -->
+<div class="notes-container">
+  <div class="add-note-form">
+    <input type="text" [(ngModel)]="newNote.title" placeholder="Título" />
+    <input type="text" [(ngModel)]="newNote.description" placeholder="Descripción" />
+    <button (click)="addNote()">Agregar Nota</button>
+  </div>
+
+  <div class="notes-list">
+    <div *ngFor="let note of notes; let i = index" class="note-item">
+      <div class="note-content">
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.description }}</p>
+      </div>
+      <div class="note-actions">
+       <!-- <button *ngIf="note.id" (click)="deleteNote(note.id)">Eliminar</button> -->
+        <!-- Implementa la funcionalidad de edición según tus necesidades -->
+      </div>
+    </div>
+  </div>
+</div>
