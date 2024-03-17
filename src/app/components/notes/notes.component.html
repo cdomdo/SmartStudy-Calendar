@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 <div class="notes-container">
@@ -6,11 +8,22 @@
   </button>
 
   <div *ngIf="showForm" class="form-container">
-    <input type="text" [(ngModel)]="newNote.title" placeholder="Título" />
-    <input type="text" [(ngModel)]="newNote.description" placeholder="Descripción" />
-    <div class="form-actions">
-      <button (click)="submitNote()"><i class="fas fa-save"></i> Guardar</button>
-      <button (click)="toggleForm()"><i class="fas fa-times"></i> Cancelar</button>
+
+    <div class="window-container">
+        <div class="styled_input">
+          <label class="text">Título:</label>
+          <input type="text" placeholder="Escribe aquí..." name="input" class="input" [(ngModel)]="newNote.title">
+        </div>
+
+        <div class="styled_input">
+          <label class="text">Contenido:</label>
+          <input type="text" placeholder="Escribe aquí..." name="input" class="input" [(ngModel)]="newNote.description">
+        </div>
+
+        <div class="form-actions">
+          <button (click)="submitNote()"><i class="fas fa-save"></i> Guardar</button>
+          <button (click)="toggleForm()"><i class="fas fa-times"></i> Cancelar</button>
+        </div>
     </div>
   </div>
 
