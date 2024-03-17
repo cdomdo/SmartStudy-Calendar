@@ -9,6 +9,7 @@ import {LogoutComponent} from "./components/logout/logout.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import { NotesComponent } from './components/notes/notes.component';
 
+
 const routes: Routes = [
   {path: '', component: LoginregisterComponent, pathMatch: 'full'},
   {path: 'calendar', component: CalendarComponent},

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-logout',
@@ -14,4 +15,11 @@ import { trigger, transition, style, animate } from '@angular/animations';
     ]),
   ],
 })
-export class LogoutComponent {}
+export class LogoutComponent implements OnInit {
+  constructor(private router: Router) {}
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 3000);
+  }
+}

@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
 
   logout(): void {
     this.userService.logout();
-    this.router.navigate(['/login']); // Asegúrate de que esta ruta es correcta en tu aplicación
+    this.router.navigate(['/logout']);
   }
 
   protected readonly user = user;

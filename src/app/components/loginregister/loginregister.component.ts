@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import {User} from "../../interfaces/user.interface";
 import {Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-loginregister',
@@ -40,24 +41,30 @@ export class LoginregisterComponent {
     }
   }
 
-  registerUser(formData: any) {
-    this.userData = formData;
-    this.userService.register(this.userData).then(() => {
-      console.log("Registro exitoso");
-      // Aquí podrías redirigir al usuario a otra página, mostrar un mensaje de éxito, etc.
-    }).catch(error => {
-      console.error('Error al registrar:', error);
-      // Aquí podrías mostrar un mensaje de error al usuario, por ejemplo.
-    });
+  registerUser(form: NgForm) {
+    if (form.valid) {
+      this.userData = form.value;
+      this.userService.register(this.userData).then(() => {
+        alert("Registro exitoso");
+      }).catch(error => {
+        alert('Error al registrar: ' + error.message);
+      });
+    }else {
+      alert('Rellena los campos correctamente')
+    }
   }
 
-  loginUser(formData: any) {
-    const { email, password } = formData;
-    this.userService.login({ email, password }).then(() => {
-      console.log("Login successful")
-      this.router.navigate(['/dashboard']);
-    }).catch(error => {
-      console.error('Error al iniciar sesión:', error);
-    });
+  loginUser(form: NgForm) {
+    if (form.valid) {
+      const {email, password} = form.value;
+      this.userService.login({email, password}).then(() => {
+        console.log("Login successful")
+        this.router.navigate(['/dashboard']);
+      }).catch(error => {
+        alert('Error al iniciar sesión: ' + error.message)
+      });
+    }else{
+      alert('Rellena los campos correctamente')
+    }
   }
 }

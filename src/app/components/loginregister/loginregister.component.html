@@ -2,35 +2,35 @@
 <body>
   <div class="container" id="container">
     <div class="form-container sign-up">
-      <form (ngSubmit)="registerUser(registerForm.value)" #registerForm="ngForm">
+      <form (ngSubmit)="registerUser(registerForm)" #registerForm="ngForm">
         <h1>Crear Cuenta</h1>
-        <input type="text" placeholder="Nombre Completo" [(ngModel)]="userData.nombreCompleto" name="nombreCompleto">
-        <input type="email" placeholder="Email" [(ngModel)]="userData.email" name="email">
-        <input type="password" placeholder="Contraseña" [(ngModel)]="userData.password" name="password">
-        <input type="password" placeholder="Confirmar Contraseña" [(ngModel)]="userData.confirmPassword" name="confirmPassword">
-        <select [(ngModel)]="userData.universidad" name="universidad">
+        <input type="text" placeholder="Nombre Completo" [(ngModel)]="userData.nombreCompleto" name="nombreCompleto" required>
+        <input type="email" placeholder="Email" [(ngModel)]="userData.email" name="email" required>
+        <input type="password" placeholder="Contraseña" [(ngModel)]="userData.password" name="password" required>
+        <input type="password" placeholder="Confirmar Contraseña" [(ngModel)]="userData.confirmPassword" name="confirmPassword" required>
+        <select [(ngModel)]="userData.universidad" name="universidad" required>
           <option value="" disabled selected>Selecciona una centro universitario</option>
           <option value="ULPGC">Universidad de Las Palmas de Gran Canaria</option>
           <option value="ULL">Universidad de La Laguna</option>
         </select>
-        <input type="tel" placeholder="Teléfono" [(ngModel)]="userData.telefono" name="telefono">
-        <input type="date" placeholder="Fecha de Nacimiento" [(ngModel)]="userData.fechaNacimiento" name="fechaNacimiento">
+        <input type="tel" placeholder="Teléfono" [(ngModel)]="userData.telefono" name="telefono" required>
+        <input type="date" placeholder="Fecha de Nacimiento" [(ngModel)]="userData.fechaNacimiento" name="fechaNacimiento" required>
         <button type="submit">Regístrate</button>
       </form>
     </div>
-    <div class="form-container sign-in">
-      <form (ngSubmit)="loginUser(loginForm.value)" #loginForm="ngForm">
-        <h1>Acceder</h1>
-        <div class="social-icons">
-          <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-        </div>
-        <span>O utiliza tu email y contraseña</span>
-        <input type="email" placeholder="Email" ngModel name="email">
-        <input type="password" placeholder="Contraseña" ngModel name="password">
-        <a href="#">¿Te olvidaste de tu contraseña?</a>
-        <button type="submit">Iniciar sesión</button>
-      </form>
-    </div>
+      <div class="form-container sign-in">
+        <form (ngSubmit)="loginUser(loginForm)" #loginForm="ngForm">
+          <h1>Acceder</h1>
+          <div class="social-icons">
+            <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+          </div>
+          <span>O utiliza tu email y contraseña</span>
+          <input type="email" placeholder="Email" ngModel name="email" required>
+          <input type="password" placeholder="Contraseña" ngModel name="password" required>
+          <a href="#">¿Te olvidaste de tu contraseña?</a>
+          <button type="submit">Iniciar sesión</button>
+        </form>
+      </div>
     <div class="toggle-container">
       <div class="toggle">
         <div class="toggle-panel toggle-left">
