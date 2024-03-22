@@ -30,6 +30,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotesComponent } from "./components/notes/notes.component";
+import { TodoComponent } from './components/todo/todo.component';
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {MatCard, MatCardContent} from "@angular/material/card";
+import {MatToolbar} from "@angular/material/toolbar";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -52,7 +57,8 @@ import { NotesComponent } from "./components/notes/notes.component";
     HeaderComponent,
     LogoutComponent,
     DashboardComponent,
-    NotesComponent
+    NotesComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,13 @@ import { NotesComponent } from "./components/notes/notes.component";
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularFireAuthModule,
-    CommonModule
+    CommonModule,
+    FaIconComponent,
+    MatCardContent,
+    MatToolbar,
+    MatCard,
+    MatLabel,
+    MatFormField
   ],
   providers: [
     provideAnimationsAsync()

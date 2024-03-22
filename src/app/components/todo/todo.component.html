@@ -1,0 +1,16 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+<div class="todo-app">
+  <header class="app-header">
+    <h1>Lista de Tareas</h1>
+  </header>
+  <div class="task-input">
+    <input type="text" [(ngModel)]="newTaskTitle" placeholder="Añade una nueva tarea..." />
+    <button (click)="addTask(newTaskTitle)"><i class="fa fa-plus"></i></button>
+  </div>
+  <ul class="task-list">
+    <li *ngFor="let task of tasks">
+      <span>{{ task.title }}</span>
+      <button (click)="removeTask(task.id)"><i class="fa fa-trash"></i></button>
+    </li>
+  </ul>
+</div>
