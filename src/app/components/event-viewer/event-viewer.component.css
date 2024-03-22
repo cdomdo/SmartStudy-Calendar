@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.event-viewer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.event-content {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+}
+
+.top-buttons {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-button, .close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+  color: #666;
+  font-size: 1.2em;
+}
+
+.icon-button:hover, .close-button:hover {
+  transform: scale(1.05);
+  color: #333;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 0.8em;
+  color: #333;
+}
+
+.event-date, .course-name, .event-description {
+  font-weight: 400;
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 0.5em;
+}
+
+.course-name {
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: #666;
+  text-underline-offset: 2px;
+  margin-top: 0.5em;
+}
+
+.event-description {
+  color: #444;
+  line-height: 1.4;
+}
+
+.edit i {
+  color: #f5cb5c;
+}
+
+.delete i {
+  color: #354159;
+}

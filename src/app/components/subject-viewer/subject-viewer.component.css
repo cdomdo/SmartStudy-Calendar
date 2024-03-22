@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.subject-viewer-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: 'Poppins', sans-serif;
+}
+
+.subject-viewer-container {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+h5 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 0.8em;
+  color: #333;
+}
+
+.course-details p {
+  font-weight: 400;
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 0.5em;
+  line-height: 1.4;
+}
+
+
+.course-details h6 {
+  font-size: 0.9em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.professor-email {
+  color: #4B6587;
+  text-decoration: none;
+}
+
+.professor-email:hover {
+  text-decoration: underline;
+}
+
+.close-button {
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.close-button:hover {
+  color: #333;
+}

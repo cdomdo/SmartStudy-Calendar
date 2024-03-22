@@ -1,0 +1,188 @@
+.notes-container {
+  max-width: 70%;
+  margin: 20px auto;
+}
+
+.toggle-form-button, .form-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #242423;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+/* INPUTS STYLES */
+
+.styled_input {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  max-width: 240px;
+  margin: 10px;
+}
+
+.styled_input label.text {
+  font-size: 0.75rem;
+  color: #242423;
+  font-weight: 700;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: white;
+  width: fit-content;
+}
+
+.styled_input input[type=text].input {
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 2px #242423 solid;
+  border-radius: 5px;
+  background: white;
+}
+
+.styled_input input[type=text].input:focus {
+  outline: none;
+}
+
+.toggle-form-button i, .form-actions button i {
+  margin-right: 5px;
+}
+
+.toggle-form-button:hover, .form-actions button:hover {
+  background-color: #484847;
+}
+
+.form-container, .notes-list {
+  margin-top: 20px;
+}
+
+.form-container {
+  position: fixed; /* Position it relative to the viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.4); /* Light background to enhance blur effect */
+  backdrop-filter: blur(10px); /* Blur effect for the background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+
+.window-container {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  width: 80%;  /* or a fixed width like 300px */
+  max-width: 500px;  /* Adjust based on your preference */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 20px 20px 60px rgba(190, 190, 190, 1);
+}
+
+.note-item {
+  display: inline-block;
+  width: calc(33.333% - 60px);
+  background-color: #EBD18D;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  vertical-align: top;
+
+}
+
+.note-content h2, .note-content p, .note-actions button {
+  margin: 10px 0;
+  overflow-wrap: break-word;
+}
+
+.note-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.note-actions button {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .note-item {
+    width: calc(50% - 20px); /* Ajusta para pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .note-item {
+    width: 100%; /* Ajusta para pantallas aún más pequeñas */
+  }
+}
+
+/* SEARCH BAR */
+
+.title-search-bar {
+  margin: 10px;
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 500px;
+}
+
+.search-input {
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  height: 45px;
+  padding-left: 2.5rem;
+  box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+  border: 0;
+  border-radius: 12px;
+  background-color: #16171d;
+  outline: none;
+  color: #bdbecb;
+  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: text;
+  z-index: 0;
+}
+
+.search-input::placeholder {
+  color: #bdbecb;
+}
+
+.search-input:hover {
+  box-shadow: 0 0 0 2.5px #2f303d, 0px 0px 25px -15px #000;
+}
+
+.search-input:active {
+  transform: scale(0.95);
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 2.5px #2f303d;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  fill: #bdbecb;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  z-index: 1;
+}

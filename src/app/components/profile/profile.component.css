@@ -1,0 +1,85 @@
+:host {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.profile-banner {
+  width: 100%;
+  background-color: #D3D3D3; /* Gris para el banner */
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.profile-image-container {
+  transform: translateY(-50%);
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white; /* Hacer que la imagen resalte sobre el banner */
+}
+
+.profile-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -75px; /* Ajustar según sea necesario para que la imagen sobresalga correctamente */
+  padding: 20px;
+  background-color: #404040; /* Gris no tan oscuro */
+  width: calc(100% - 40px); /* Ajustar el ancho para igualar al banner, considerando el padding del host */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 8px 8px;
+  color: white; /* Texto blanco */
+}
+
+.profile-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-detail-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  color: white;
+}
+
+.fa-icon {
+  margin-right: 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.edit-user-info-button {
+  background-color: #f5cb5c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.edit-user-info-button:hover {
+  background-color: #2A3942;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .profile-info-container, .profile-details {
+    align-items: center;
+    width: calc(100% - 40px); /* Asegura que la responsividad mantiene el ajuste de ancho */
+  }
+}

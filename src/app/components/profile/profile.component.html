@@ -1,0 +1,44 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+<app-header></app-header>
+
+<div class="profile-banner">
+  <div class="profile-image-container">
+    <img alt="Imagen de perfil" src="https://via.placeholder.com/250" class="profile-image" />
+  </div>
+</div>
+
+<div class="profile-info-container">
+  <h2 class="profile-name">{{ userData?.nombreCompleto }} - <span class="profile-role">Estudiante</span></h2>
+
+  <div class="profile-details">
+    <!-- Icono y detalle de Teléfono -->
+    <div class="profile-detail-item">
+      <i class="fa-icon fa fa-phone"></i>
+      <span>{{ userData?.telefono }}</span>
+    </div>
+
+    <!-- Icono y detalle de Universidad -->
+    <div class="profile-detail-item">
+      <i class="fa-icon fa fa-university"></i>
+      <span>{{ userData?.universidad }}</span>
+    </div>
+
+    <!-- Icono y detalle de Email -->
+    <div class="profile-detail-item">
+      <i class="fa-icon fa fa-envelope"></i>
+      <span>{{ userData?.email }}</span>
+    </div>
+
+    <!-- Icono y detalle de Fecha de Nacimiento -->
+    <div class="profile-detail-item">
+      <i class="fa-icon fa fa-birthday-cake"></i>
+      <span>{{ userData?.fechaNacimiento }}</span>
+    </div>
+  </div>
+
+  <button type="button" class="edit-user-info-button">
+    <i class="fas fa-edit"></i> Editar información de usuario
+  </button>
+
+</div>

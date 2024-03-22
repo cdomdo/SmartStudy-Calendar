@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<div class="event-creator-overlay" @dialog>
+  <div class="event-creator-container">
+    <span class="close-button" (click)="closeDialog()">&#10005;</span>
+    <form [formGroup]="eventForm" (ngSubmit)="createEvent()">
+      <div class="form-group">
+        <h4>Crear evento</h4>
+        <label for="eventName">Nombre:</label>
+        <input type="text" id="eventName" formControlName="name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="eventDate">Fecha:</label>
+        <input type="date" id="eventDate" formControlName="date" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="eventTime">Hora:</label>
+        <input type="time" id="eventTime" formControlName="time" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="eventCourse">Asignatura:</label>
+        <select id="eventCourse" formControlName="course" class="form-control">
+          <option *ngFor="let course of courses" [ngValue]="course.id">{{ course.name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="eventDescription">Descripción:</label>
+        <textarea id="eventDescription" formControlName="description" class="form-control textarea"></textarea>
+      </div>
+      <div class="action-buttons">
+        <button type="button" class="icon-button" (click)="manageSubjects()">
+          <i class="fas fa-cog"></i> Gestionar asignaturas
+        </button>
+        <button class="icon-button btn-primary" [disabled]="isLoadingCourses">
+          <i class="fas fa-check"></i> Crear Evento
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<app-subject-manager *ngIf="showSubjectManager" (close)="closeSubjectManager()"></app-subject-manager>

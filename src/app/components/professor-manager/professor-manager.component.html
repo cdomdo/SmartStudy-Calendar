@@ -1,0 +1,14 @@
+<div class="professor-manager-container">
+  <span class="close-button" (click)="closeDialog()">&#10005;</span>
+  <h2 class="professor-manager-title">Gestionar profesores</h2>
+  <div class="professors-list">
+    <div *ngFor="let professor of professors; let i = index" (click)="selectProfessor(i)" [class.selected]="i === selectedProfessorIndex">
+      {{ professor.name }}
+    </div>
+  </div>
+  <div *ngIf="selectedProfessorIndex !== null" class="action-buttons">
+    <button (click)="editProfessor()">Editar Profesor</button>
+    <button (click)="deleteProfessor()">Eliminar Profesor</button>
+  </div>
+  <button (click)="addProfessor()" class="add-professor-btn">Añadir Profesor</button>
+</div>

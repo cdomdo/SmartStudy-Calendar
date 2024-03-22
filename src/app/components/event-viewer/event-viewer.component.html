@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<div class="event-viewer-container" *ngIf="event" @dialog>
+  <div class="event-content">
+    <div class="top-buttons">
+      <button class="icon-button edit" (click)="editEvent()"><i class="fas fa-pencil-alt"></i></button>
+      <button class="icon-button delete" (click)="deleteEvent()"><i class="fas fa-trash"></i></button>
+      <span class="close-button" (click)="closeDialog()">&#10005;</span>
+    </div>
+    <h4>{{ event.name }}</h4>
+    <p class="event-date">{{ event.date.toDate() | date:'fullDate' | uppercase }} - {{ event.date.toDate() | date:'shortTime' | uppercase }}</p>
+    <p class="course-name" (click)="toggleSubjectViewer()">{{ event.course?.name | uppercase }}</p>
+    <p class="event-description">{{ event.description }}</p>
+  </div>
+  <app-subject-viewer *ngIf="showSubjectViewer" [selectedCourse]="selectedCourse" (close)="showSubjectViewer=false"></app-subject-viewer>
+  <app-event-editor *ngIf="showEventEditor" [event]="event" (closeEditor)="closeDialog()"></app-event-editor>
+</div>
